@@ -31,13 +31,13 @@ if ($_GET['acao'] != 'insert') {
 
     <form class="g-3" action="<?= $_GET['acao'] ?>aministrador.php" method="POST">
 
-        <input type="hidden" name="id" id="id" value="<?= funcoes::setValue($dados, "id") ?>">
+        <input type="hidden" name="id_administrador" id="id_administrador" value="<?= funcoes::setValue($dados, "id_administrador") ?>">
 
         <div class="row">
 
             <div class="col-12">
                 <label for="nome_completo" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="nome_completo" name="nome_completo" placeholder="Nome do administrador" requiredautofocus value="<?= Funcoes::setValue($dados, 'nome_completo') ?>">
+                <input type="text" class="form-control" id="nome_completo" name="nome_completo" placeholder="Nome do administrador" required autofocus value="<?= Funcoes::setValue($dados, 'nome_completo') ?>">
             </div>
 
             <div class="col-4 mt-3">

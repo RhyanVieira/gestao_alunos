@@ -34,13 +34,13 @@ if ($_GET['acao'] != 'insert') {
 
     <form class="g-3" action="<?= $_GET['acao'] ?>aluno.php" method="POST">
 
-        <input type="hidden" name="id" id="id" value="<?= funcoes::setValue($dados, "id") ?>">
+        <input type="hidden" name="id_aluno" id="id_aluno" value="<?= funcoes::setValue($dados, "id_aluno") ?>">
 
         <div class="row">
 
             <div class="col-12">
                 <label for="nome_completo" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="nome_completo" name="nome_completo" placeholder="Nome do aluno" requiredautofocus value="<?= Funcoes::setValue($dados, 'nome_completo') ?>">
+                <input type="text" class="form-control" id="nome_completo" name="nome_completo" placeholder="Nome do aluno" required autofocus value="<?= Funcoes::setValue($dados, 'nome_completo') ?>">
             </div>
 
             <div class="col-4 mt-3">
@@ -66,35 +66,34 @@ if ($_GET['acao'] != 'insert') {
             <div class="col-3 mt-3">
                 <label for="estado" class="form-label">Estado</label>
                 <select class="form-control" id="estado" name="estado" required>
-                    <option value=""  <?= Funcoes::setValue($dados, 'estado')?>>...</option>
-                    <option value="Acre"  <?= Funcoes::setValue($dados, 'estado')?>>AC</option>
-                    <option value="Alagoas"  <?= Funcoes::setValue($dados, 'estado')?>>AL</option>
-                    <option value="Amapá"  <?= Funcoes::setValue($dados, 'estado')?>>AP</option>
-                    <option value="Amazonas"  <?= Funcoes::setValue($dados, 'estado')?>>AM</option>
-                    <option value="Bahia"  <?= Funcoes::setValue($dados, 'estado')?>>BA</option>
-                    <option value="Ceará"  <?= Funcoes::setValue($dados, 'estado')?>>CE</option>
-                    <option value="Distrito Federal"  <?= Funcoes::setValue($dados, 'estado')?>>DF</option>
-                    <option value="Espírito Santo"  <?= Funcoes::setValue($dados, 'estado')?>>ES</option>
-                    <option value="Goiás"  <?= Funcoes::setValue($dados, 'estado')?>>GO</option>
-                    <option value="Maranhão"  <?= Funcoes::setValue($dados, 'estado')?>>MA</option>
-                    <option value="Mato Grosso"  <?= Funcoes::setValue($dados, 'estado')?>>MT</option>
-                    <option value="Mato Grosso do Sul"  <?= Funcoes::setValue($dados, 'estado')?>>MS</option>
-                    <option value="Minas Gerais"  <?= Funcoes::setValue($dados, 'estado')?>>MG</option>
-                    <option value="Pará"  <?= Funcoes::setValue($dados, 'estado')?>>PA</option>
-                    <option value="Paraíba"  <?= Funcoes::setValue($dados, 'estado')?>>PB</option>
-                    <option value="Paraná"  <?= Funcoes::setValue($dados, 'estado')?>>PR</option>
-                    <option value="Pernambuco"  <?= Funcoes::setValue($dados, 'estado')?>>PE</option>
-                    <option value="Piauí"  <?= Funcoes::setValue($dados, 'estado')?>>PI</option>
-                    <option value="Rio de Janeiro"  <?= Funcoes::setValue($dados, 'estado')?>>RJ</option>
-                    <option value="Rio Grande do Norte"  <?= Funcoes::setValue($dados, 'estado')?>>RN</option>
-                    <option value="Rio Grande do Sul"  <?= Funcoes::setValue($dados, 'estado')?>>RS</option>
-                    <option value="Rondônia"  <?= Funcoes::setValue($dados, 'estado')?>>RO</option>
-                    <option value="Roraima"  <?= Funcoes::setValue($dados, 'estado')?>>RR</option>
-                    <option value="Santa Catarina"  <?= Funcoes::setValue($dados, 'estado')?>>SC</option>
-                    <option value="São Paulo"  <?= Funcoes::setValue($dados, 'estado')?>>SP</option>
-                    <option value="Sergipe"  <?= Funcoes::setValue($dados, 'estado')?>>SE</option>
-                    <option value="Tocantins"  <?= Funcoes::setValue($dados, 'estado')?>>TO</option>
-                        
+                    <option value=""  <?= Funcoes::setValue($dados, 'estado') == "" ? 'selected' : '' ?>>...</option>
+                    <option value="Acre"  <?= Funcoes::setValue($dados, 'estado') == "Acre" ? 'selected' : '' ?>>AC</option>
+                    <option value="Alagoas"  <?= Funcoes::setValue($dados, 'estado') == "Alagoas" ? 'selected' : '' ?>>AL</option>
+                    <option value="Amapá"  <?= Funcoes::setValue($dados, 'estado') == "Amapá" ? 'selected' : '' ?>>AP</option>
+                    <option value="Amazonas"  <?= Funcoes::setValue($dados, 'estado') == "Amazonas" ? 'selected' : '' ?>>AM</option>
+                    <option value="Bahia"  <?= Funcoes::setValue($dados, 'estado') == "Bahia" ? 'selected' : '' ?>>BA</option>
+                    <option value="Ceará"  <?= Funcoes::setValue($dados, 'estado') == "Ceará" ? 'selected' : '' ?>>CE</option>
+                    <option value="Distrito Federal"  <?= Funcoes::setValue($dados, 'estado') == "Distrito Federal" ? 'selected' : '' ?>>DF</option>
+                    <option value="Espírito Santo"  <?= Funcoes::setValue($dados, 'estado') == "Espírito Santo" ? 'selected' : '' ?>>ES</option>
+                    <option value="Goiás"  <?= Funcoes::setValue($dados, 'estado') == "Goiás" ? 'selected' : '' ?>>GO</option>
+                    <option value="Maranhão"  <?= Funcoes::setValue($dados, 'estado') == "Maranhão" ? 'selected' : '' ?>>MA</option>
+                    <option value="Mato Grosso"  <?= Funcoes::setValue($dados, 'estado') == "Mato Grosso" ? 'selected' : '' ?>>MT</option>
+                    <option value="Mato Grosso do Sul"  <?= Funcoes::setValue($dados, 'estado') == "Mato Grosso do Sul"  ? 'selected' : '' ?>>MS</option>
+                    <option value="Minas Gerais"  <?= Funcoes::setValue($dados, 'estado') == "Minas Gerais" ? 'selected' : '' ?>>MG</option>
+                    <option value="Pará"  <?= Funcoes::setValue($dados, 'estado') == "Pará" ? 'selected' : '' ?>>PA</option>
+                    <option value="Paraíba"  <?= Funcoes::setValue($dados, 'estado') == "Paraíba" ? 'selected' : '' ?>>PB</option>
+                    <option value="Paraná"  <?= Funcoes::setValue($dados, 'estado') == "Paraná" ? 'selected' : '' ?>>PR</option>
+                    <option value="Pernambuco"  <?= Funcoes::setValue($dados, 'estado') == "Pernambuco" ? 'selected' : '' ?>>PE</option>
+                    <option value="Piauí"  <?= Funcoes::setValue($dados, 'estado') == "Piauí" ? 'selected' : '' ?>>PI</option>
+                    <option value="Rio de Janeiro"  <?= Funcoes::setValue($dados, 'estado') == "Rio de Janeiro" ? 'selected' : '' ?>>RJ</option>
+                    <option value="Rio Grande do Norte"  <?= Funcoes::setValue($dados, 'estado') == "Rio Grande do Norte" ? 'selected' : '' ?>>RN</option>
+                    <option value="Rio Grande do Sul"  <?= Funcoes::setValue($dados, 'estado') == "Rio Grande do Sul" ? 'selected' : '' ?>>RS</option>
+                    <option value="Rondônia"  <?= Funcoes::setValue($dados, 'estado') == "Rondônia" ? 'selected' : '' ?>>RO</option>
+                    <option value="Roraima"  <?= Funcoes::setValue($dados, 'estado') == "Roraima" ? 'selected' : '' ?>>RR</option>
+                    <option value="Santa Catarina"  <?= Funcoes::setValue($dados, 'estado') == "Santa Cantarina" ? 'selected' : '' ?>>SC</option>
+                    <option value="São Paulo"  <?= Funcoes::setValue($dados, 'estado') == "São Paulo" ? 'selected' : '' ?>>SP</option>
+                    <option value="Sergipe"  <?= Funcoes::setValue($dados, 'estado') == "Sergipe" ? 'selected' : '' ?>>SE</option>
+                    <option value="Tocantins"  <?= Funcoes::setValue($dados, 'estado') == "Tocantins" ? 'selected' : '' ?>>TO</option>      
                 </select>
             </div>
 
@@ -132,7 +131,7 @@ if ($_GET['acao'] != 'insert') {
 
         <div class="row mt-3">
             <div class="col-12">
-                <a href="index.php?pagina=listaAdministrador" 
+                <a href="index.php?pagina=listaAluno" 
                     class="btn btn-outline-secondary btn-sm">
                     Voltar
                 </a>

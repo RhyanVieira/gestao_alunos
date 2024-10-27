@@ -132,6 +132,52 @@ class Funcoes
         }
         return $default;
     }
+
+    /**
+     * getStatusMatricula
+     * 
+     * @param int $status
+     * @param string
+     */
+    public static function getStatusMatricula($status) : string
+    {
+        if ($status == 1) {
+            return "Ativo";
+        } elseif ($status == 2) {
+            return "Inativo";
+        } elseif ($status == 3) {
+            return "Trancado";
+        } elseif ($status == 4) {
+            return "Cancelado";
+        } elseif ($status == 5) {
+            return "Aguardando pagamento";
+        } elseif ($status == 6) {
+            return "Pendente de documentação";
+        } elseif ($status == 2) {
+            return "Egresso";
+        } else {
+            return "...";
+        }
+    }
+
+    /**
+     * getStatusPagamento
+     * 
+     * @param int $status
+     * @param string
+     */
+    public static function getStatusPagamento($status) : string
+    {
+        if ($status == 1) {
+            return "Pago";
+        } elseif ($status == 2) {
+            return "Pendente";
+        } else {
+            return "...";
+        }
+    }
 }
+
+
 
     
