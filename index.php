@@ -1,13 +1,13 @@
 <?php
-    session_start();
+session_start();
 
-    ob_start();
+ob_start();
 
-    date_default_timezone_set('America/Sao_Paulo');
+date_default_timezone_set('America/Sao_Paulo');
 
-    require_once "lib/funcoes.php";
+require_once "lib/funcoes.php";
 
-    $current_page = basename($_SERVER['REQUEST_URI']);
+$current_page = basename($_SERVER['REQUEST_URI']);
 ?>
 
 <!DOCTYPE html>
@@ -23,8 +23,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
 
-
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid">
@@ -39,19 +39,22 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2 <?= ($current_page == 'index.php' || $current_page == '') ? 'active' : '' ?> "aria-current="page" href="index.php">Home</a>
+                            <a class="nav-link mx-lg-2 <?= ($current_page == 'index.php' || $current_page == '') ? 'active' : '' ?> " aria-current="page" href="index.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2 <?= ($current_page == 'blog.php') ? 'active' : '' ?>" href="index.php?pagina=blog">Blog</a>
+                            <a class="nav-link mx-lg-2 <?= ($current_page == 'index.php?pagina=sobrenos') ? 'active' : '' ?>" href="index.php?pagina=sobrenos">Sobre Nós</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2 <?= ($current_page == 'sobrenos.php') ? 'active' : '' ?>" href="#">Sobre Nós</a>
+                            <a class="nav-link mx-lg-2 <?= ($current_page == 'index.php?pagina=servicos') ? 'active' : '' ?>" href="#">Serviços</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2 <?= ($current_page == 'FAQ.php') ? 'active' : '' ?>" href="#">FAQ</a>
+                            <a class="nav-link mx-lg-2 <?= ($current_page == 'index.php?pagina=propostas') ? 'active' : '' ?>" href="#">Propostas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2 <?= ($current_page == 'contato.php') ? 'active' : '' ?>" href="#">Contato</a>
+                            <a class="nav-link mx-lg-2 <?= ($current_page == 'index.php?pagina=blog') ? 'active' : '' ?>" href="index.php?pagina=blog">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2 <?= ($current_page == 'index.php?pagina=contato') ? 'active' : '' ?>" href="index.php?pagina=contato">Contato</a>
                         </li>
                     </ul>
                 </div>
@@ -69,22 +72,22 @@
             </button>
         </div>
     </nav>
-    
+
     <div class="container">
         <?= Funcoes::mensagem(); ?>
     </div>
 
     <?php
 
-        $pagina = 'home';
+    $pagina = 'home';
 
-        if (isset($_GET['pagina'])) {
-            $pagina = $_GET['pagina'];
-        }
+    if (isset($_GET['pagina'])) {
+        $pagina = $_GET['pagina'];
+    }
 
-        require_once $pagina . '.php';
+    require_once $pagina . '.php';
 
-        ?>
+    ?>
 
     <footer>
         <div class="container">
@@ -92,32 +95,33 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="single-box">
                         <img src="assets/img/LogoNav.jpg" style="max-width: 80px;" alt="">
-                        <p>Somos uma instituição comprometida em oferecer educação de qualidade e um ambiente acolhedor para o desenvolvimento acadêmico e pessoal. 
-                        <br>Junte-se a nós para transformar seu futuro.</p>
+                        <p>Somos uma instituição comprometida em oferecer educação de qualidade e um ambiente acolhedor para o desenvolvimento acadêmico e pessoal.
+                            <br>Junte-se a nós para transformar seu futuro.
+                        </p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="single-box">
                         <h2>Links Rápidos</h2>
-                    <ul>
-                        <li><a href="#">Início</a></li>
-                        <li><a href="#">Sobre Nós</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Contato</a></li>
-                    </ul>
-                    </ul>
-                    </div>                    
+                        <ul>
+                            <li><a href="#">Início</a></li>
+                            <li><a href="#">Sobre Nós</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Contato</a></li>
+                        </ul>
+                        </ul>
+                    </div>
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="single-box">
                         <h2>Recursos</h2>
-                    <ul>
-                        <li><a href="#">Portal do Aluno</a></li>
-                        <li><a href="#">Portal do Professor</a></li>
-                        <li><a href="#">Suporte</a></li>
-                        <li><a href="#">Política de Privacidade</a></li>
-                    </ul>
-                    </div>                    
+                        <ul>
+                            <li><a href="#">Portal do Aluno</a></li>
+                            <li><a href="#">Portal do Professor</a></li>
+                            <li><a href="#">Suporte</a></li>
+                            <li><a href="#">Política de Privacidade</a></li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="single-box">
@@ -143,5 +147,6 @@
     </footer>
 
 </body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
 </html>

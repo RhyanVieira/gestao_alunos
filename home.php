@@ -51,16 +51,16 @@
         <div class="row">
             <div class="col-lg-4 col-md-12 col-12">
                 <div class="about-img">
-                    <img src="" alt="" class="img-fluid">
+                    <img src="assets/img/LogoNav.jpg" alt="" class="img-fluid">
                 </div>
             </div>
             <div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-5">
                 <div class="about-text">
-                    <h2>A tecnologia que conecta<br /> Instuições e resultados!</h2>
+                    <h2>A tecnologia que conecta<br /> instuições e resultados!</h2>
                     <p>Maximize o potencial de sua instituição com uma gestão simplificada e inteligente.
                         Transforme a administração escolar em um aliado para o aprendizado e o sucesso dos alunos.
                     </p>
-                    <a href="#" class="page-button" type="button">Saiba Mais</a>
+                    <a href="index.php?pagina=sobrenos" class="page-button" type="button">Saiba Mais</a>
                 </div>
             </div>
         </div>
@@ -86,8 +86,8 @@
                         <div class="card-body">
                             <i class="bi bi-laptop"></i>
                             <h3 class="card-title">Captação Eficiente de Alunos</h3>
-                            <p class="lead">Nossa plataforma permite uma captação simplificada e eficiente de novos alunos. 
-                                Com ferramentas de automação, segmentação e personalização, atraímos o público certo e otimizamos 
+                            <p class="lead">Nossa plataforma permite uma captação simplificada e eficiente de novos alunos.
+                                Com ferramentas de automação, segmentação e personalização, atraímos o público certo e otimizamos
                                 os esforços para alcançar quem realmente se interessa pela sua instituição, reduzindo custos e melhorando os resultados de cada campanha.</p>
                         </div>
                     </div>
@@ -99,8 +99,8 @@
                         <div class="card-body">
                             <i class="bi bi-intersect"></i>
                             <h3 class="card-title">Gestão Integrada e Inteligente</h3>
-                            <p class="lead">Organize, gerencie e acompanhe o histórico dos alunos em uma plataforma centralizada. 
-                                Com funcionalidades para controle de matrículas, acompanhamento de desempenho e geração de relatórios 
+                            <p class="lead">Organize, gerencie e acompanhe o histórico dos alunos em uma plataforma centralizada.
+                                Com funcionalidades para controle de matrículas, acompanhamento de desempenho e geração de relatórios
                                 detalhados, ajudamos a garantir uma experiência de gestão eficiente e completa, trazendo praticidade e agilidade para o dia a dia.</p>
                         </div>
                     </div>
@@ -112,15 +112,15 @@
                         <div class="card-body">
                             <i class="bi bi-person-check"></i>
                             <h3 class="card-title">Comunicação e Fidelização</h3>
-                            <p class="lead">Aumente a satisfação e retenção dos alunos com comunicação personalizada e eficiente. 
-                                Nossa plataforma possibilita o envio de notificações, atualizações e mensagens em tempo real, 
+                            <p class="lead">Aumente a satisfação e retenção dos alunos com comunicação personalizada e eficiente.
+                                Nossa plataforma possibilita o envio de notificações, atualizações e mensagens em tempo real,
                                 mantendo alunos e responsáveis informados e engajados. Fidelize alunos e garanta uma jornada satisfatória do início ao fim.</p>
                         </div>
-                    </div>    
+                    </div>
                 </a>
-                </div>
             </div>
         </div>
+    </div>
     </div>
 </section>
 <hr class="custom-line">
@@ -133,8 +133,9 @@
             <div class="col-md-12">
                 <div class="section-header text-center pb-5">
                     <h2>Nossas Propostas</h2>
-                    <p>O sistema de captação e gestão de alunos foi desenvolvido para otimizar todos os processos de uma instituição de ensino, 
-                    <br> desde a inscrição até a formação do aluno.</p>
+                    <p>O sistema de captação e gestão de alunos foi desenvolvido para otimizar todos os processos de uma instituição de ensino,
+                        <br> desde a inscrição até a formação do aluno.
+                    </p>
                 </div>
             </div>
         </div>
@@ -146,8 +147,8 @@
                             <img src="" class="img-fluid" alt="">
                         </div>
                         <h3 class="card-title">Painel Administrativo Completo</h3>
-                        <p class="lead">Controle total de turmas, professores e alunos, tudo em um só lugar. 
-                            O painel permite uma organização prática do calendário acadêmico, com controle de frequência e gestão de notas, 
+                        <p class="lead">Controle total de turmas, professores e alunos, tudo em um só lugar.
+                            O painel permite uma organização prática do calendário acadêmico, com controle de frequência e gestão de notas,
                             garantindo que a administração seja fluida e eficiente.</p>
                         <a href="#" class="page-button" type="button">Ler Mais</a>
                     </div>
@@ -160,7 +161,7 @@
                             <img src="" class="img-fluid" alt="">
                         </div>
                         <h3 class="card-title">Monitoramento do Desempenho Escolar</h3>
-                        <p class="lead">Facilite o acompanhamento do desempenho dos alunos com lançamentos de notas e feedbacks personalizados. 
+                        <p class="lead">Facilite o acompanhamento do desempenho dos alunos com lançamentos de notas e feedbacks personalizados.
                             Relatórios de progresso podem ser acessados por pais e responsáveis, e gráficos detalhados permitem comparações ao longo do ano letivo.</p>
                         <a href="#" class="page-button" type="button">Ler Mais</a>
                     </div>
@@ -173,7 +174,7 @@
                             <img src="" class="img-fluid" alt="">
                         </div>
                         <h3 class="card-title">Gestão Financeira Eficiente</h3>
-                        <p class="lead">Simplifique o controle financeiro da instituição. Gerencie mensalidades e boletos, acompanhe o histórico de pagamentos e inadimplência, 
+                        <p class="lead">Simplifique o controle financeiro da instituição. Gerencie mensalidades e boletos, acompanhe o histórico de pagamentos e inadimplência,
                             e gere relatórios detalhados para uma visão clara da saúde financeira da instituição.</p>
                         <a href="#" class="page-button" type="button">Ler Mais</a>
                     </div>
@@ -282,24 +283,22 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="mb-3">
-                                <input class="form-control" placeholder="Nome da Instituição" required="" type="text">
+                                <input class="form-control" name="nome-instituicao" id="nome-instituicao" placeholder="Nome da Instituição" type="text" required>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="mb-3">
-                                <input class="form-control" placeholder="E-mail" required="" type="email">
+                                <input class="form-control" name="email" id="email" placeholder="E-mail" type="email" required>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="mb-3">
-                                <textarea class="form-control" placeholder="Mensagem" required=""
-                                    rows="3"></textarea>
+                                <textarea class="form-control " name="mensagem" id="mensagem" cols="30" rows="9" placeholder="Escreva sua mensagem"></textarea>
                             </div>
                         </div>
-                        <a href="#" class="enviar-button">Enviar Agora</a>
+                        <button type="submit" class="enviar-button">Enviar Agora</button>
                     </div>
                 </form>
             </div>
         </div>
-    </div>
 </section>

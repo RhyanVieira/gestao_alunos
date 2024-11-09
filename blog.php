@@ -4,7 +4,7 @@
 </div>
 
 <section class="container mt-5 mb-5 blog">
-    <h2 class="mb-4">Últimos Artigos</h2>
+    <h4 class="mb-4 line-under">Últimos Artigos</h4>
     <div class="row ">
         <div class="col-12 col-md-12 col-lg-4">
             <a href="" class="card-link">
@@ -40,8 +40,7 @@
             </a>
         </div>
     </div>
-    <hr class="custom-line mt-5 mb-5">
-    <h2 class="mb-4">Artigos Anteriores</h2>
+    <h4 class="mb-4 mt-5 line-under">Artigos Anteriores</h4>
     <div class="row ">
         <div class="col-12 col-md-12 col-lg-4 mb-4">
             <a href="" class="card-link">
