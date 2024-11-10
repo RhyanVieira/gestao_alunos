@@ -1,0 +1,153 @@
+.rounded-full {
+  border-radius: 100%;
+}
+
+.wrapper{
+	background-color: #fff;
+}
+.sidebar-wrapper {
+	background-color: #2a2a8120;
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin 0.25s ease-out;
+  -moz-transition: margin 0.25s ease-out;
+  -o-transition: margin 0.25s ease-out;
+  transition: margin 0.25s ease-out;
+}
+  
+.sidebar-wrapper .sidebar-heading {
+  background-color: #191970;
+	color: #fff;
+	padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+  
+.sidebar-wrapper .list-group {
+  color: #fff;
+	width: 15rem;
+}
+  
+.page-content-wrapper {
+  min-width: 100vw;
+}
+  
+.wrapper.toggled .sidebar-wrapper {
+  margin-left: 0;
+}
+  
+#menu-toggle {
+  cursor: pointer;
+}
+  
+.list-group-item {
+  border: none;
+  padding: 20px 30px;
+}
+.list-group-item:hover{
+	color: #191970;
+}  
+.list-group-item.active {
+	color: #191970;
+  background-color: transparent;
+  font-weight: bold;
+  border: none;
+}
+  
+@media (min-width: 768px) {
+  .sidebar-wrapper {
+    margin-left: 0;
+  }
+  
+  .page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+  
+  #wrapper.toggled .sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+
+.metricas-box{
+	background-color: #191970;
+	padding: 1rem;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	color: #fff;
+	text-decoration: none;
+	border-radius: 5px;
+	box-shadow: 15px 15px 40px rgba(0, 0, 0, 0.3);
+	transition: transform 0.3s ease;
+}
+.metricas-box:hover{
+	transform: scale(1.05);
+}
+.link-text-decoration{
+	text-decoration: none;
+}
+.table{
+	width: 100%;
+  border-collapse: collapse; 
+  border-radius: 5px; 
+  overflow: hidden;
+}
+
+table th {
+	padding: 12px;
+	text-align: left;
+	border-right: 1px solid #cecece;
+}
+
+table td {
+	padding: 12px;
+	border-right: 1px solid #cecece; 
+}
+
+table td:last-child, table th:last-child {
+	border-right: none;
+}
+
+.area-table{ 
+  padding: 0.7rem;
+  background-color: #2a2a8120;
+  border-radius: 5px;
+
+}
+.area-table-lista{
+  padding: 0.7rem;
+  background-color: #2a2a8120;
+  border-radius: 5px;
+}
+.btn-lista{
+  background-color: #191970;
+  color: #fff;
+  font-size: 14px;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  transition: transform 0.3s;
+}
+.btn-lista:hover{
+  color: #fff;
+  background-color: #2a2a81;
+}
+
+.line-under {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+}
+.line-under::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #2a2a8120;
+}
+

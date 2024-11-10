@@ -53,7 +53,7 @@
                     $_SESSION['userName']   = $data['nome_completo'];
                     $_SESSION['userNivel']  = $data['nivel'];
 
-                    return header("Location: index.php");
+                    return header("Location: dashboard.php");
                 }
             }
         }    

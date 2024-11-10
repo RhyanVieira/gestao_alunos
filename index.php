@@ -40,7 +40,7 @@ $current_page = basename($_SERVER['REQUEST_URI']);
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2 <?= ($current_page == 'index.php' || $current_page == '') ? 'active' : '' ?> " aria-current="page" href="index.php">Home</a>
+                            <a class="nav-link mx-lg-2 <?= ($current_page == 'index.php' || $current_page == '') ? 'active' : '' ?> " href="index.php">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link mx-lg-2 <?= ($current_page == 'index.php?pagina=sobrenos') ? 'active' : '' ?>" href="index.php?pagina=sobreNos">Sobre Nós</a>

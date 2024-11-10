@@ -1,31 +1,63 @@
 <?php
-//listaAluno.php
 
 require_once "lib/Database.php";
 require_once "lib/funcoes.php";
 
 $db = new Database();
 
-$data = $db->dbSelect("SELECT * FROM aluno ORDER BY nome_completo");
+$data = $db->dbSelect("SELECT * FROM aluno ORDER BY data_matricula DESC LIMIT 15");
+
+$countAluno = $db->dbSelect("SELECT * FROM aluno", 'count');
+
+$countMatricula = $db->dbSelect("SELECT * FROM matricula WHERE status_matricula = 1", 'count');
+
+$countPagamento = $db->dbSelect("SELECT * FROM mensalidade WHERE status_pagamento = 2", 'count');
 
 ?>
 
-<div class="container-fluid px-4">
 
-    <div class="row">
-        <div class="col-10">
-            <h3 class="line-under">Lista de Alunos</h3>
+<div class="container-fluid px-4">
+    <div class="row g-3 my-2">
+        <div class="col-md-4">
+            <a href="" class="link-text-decoration">
+                <div class="metricas-box">
+                    <div>
+                        <h3 class="fs-2"><?= $countAluno ?></h3>
+                        <p class="fs-5">Total de Alunos</p>
+                    </div>
+                    <i class="bi bi-people-fill fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                </div>
+            </a>
         </div>
-        <div class="col-2">
-            <a href="#" class="btn-lista" title="nova">Novo</a>
+
+        <div class="col-md-4">
+            <a href="" class="link-text-decoration">
+                <div class="metricas-box">
+                    <div>
+                        <h3 class="fs-2"><?= $countMatricula ?></h3>
+                        <p class="fs-5">Matriculas Ativas</p>
+                    </div>
+                    <i
+                        class="bi bi-journal-check fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="" class="link-text-decoration">
+                <div class="metricas-box">
+                    <div>
+                        <h3 class="fs-2"><?= $countPagamento ?></h3>
+                        <p class="fs-5">Pagamentos Pendentes</p>
+                    </div>
+                    <i class="bi bi-currency-dollar fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                </div>
+            </a>
         </div>
     </div>
-    
 
-    <?= funcoes::mensagem() ?>
-
-    <div class="row my-5 area-table-lista" >
-        <h3 class="fs-4 mb-3"></h3>
+    <div class="row my-5 area-table" >
+        <h3 class="fs-4 mb-3">Alunos Recentes</h3>
         <div class="col">
             <div class="table-responsive">
                 <table class="table table-hover">
@@ -68,4 +100,5 @@ $data = $db->dbSelect("SELECT * FROM aluno ORDER BY nome_completo");
             </div>
         </div>
     </div>
+
 </div>

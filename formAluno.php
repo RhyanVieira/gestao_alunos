@@ -10,9 +10,9 @@ $dados = [];
 
 if ($_GET['acao'] != 'insert') {
     $dados = $db->dbSelect(
-        "SELECT * FROM aluno WHERE id = ?",
+        "SELECT * FROM aluno WHERE id_aluno = ?",
         'first',
-        [$_GET['id']]
+        [$_GET['id_aluno']]
     );
 }
 
@@ -24,19 +24,13 @@ if ($_GET['acao'] != 'insert') {
         <div class="col-10">
             <h3>Alunos<?= $func->subTitulo($_GET['acao']) ?></h3>
         </div>
-        <div class="col-2 text-end">
-            <a href="index.php?pagina=listaAluno" 
-                class="btn btn-outline-secondary btn-sm">
-                Voltar
-            </a>
-        </div>
     </div>
 
-    <form class="g-3" action="<?= $_GET['acao'] ?>aluno.php" method="POST">
+    <form class="g-3" action="<?= $_GET['acao'] ?>Aluno.php" method="POST">
 
         <input type="hidden" name="id_aluno" id="id_aluno" value="<?= funcoes::setValue($dados, "id_aluno") ?>">
 
-        <div class="row">
+        <div class="row form-style">
 
             <div class="col-12">
                 <label for="nome_completo" class="form-label">Nome</label>
@@ -45,22 +39,22 @@ if ($_GET['acao'] != 'insert') {
 
             <div class="col-4 mt-3">
                 <label for="data_nascimento" class="form-label">Data de Nascimento</label>
-                <input type="text" class="form-control" id="data_nascimento" name="data_nascimento" required value="<? funcoes::setValue($dados, 'data_nascimento') ?>">
+                <input type="text" class="form-control" id="data_nascimento" name="data_nascimento" required value="<?= funcoes::setValue($dados, 'data_nascimento') ?>">
             </div>
 
             <div class="col-4 mt-3">
                 <label for="telefone" class="form-label">Telefone</label>
-                <input type="text" class="form-control" id="telefone" name="telefone" required value="<? funcoes::setValue($dados, 'telefone') ?>">
+                <input type="text" class="form-control" id="telefone" name="telefone" required value="<?= funcoes::setValue($dados, 'telefone') ?>">
             </div>
 
             <div class="col-4 mt-3">
                 <label for="cpf" class="form-label">CPF</label>
-                <input type="text" class="form-control" id="cpf" name="cpf" required value="<? funcoes::setValue($dados, 'cpf') ?>">
+                <input type="text" class="form-control" id="cpf" name="cpf" required value="<?= funcoes::setValue($dados, 'cpf') ?>">
             </div>
 
             <div class="col-6 mt-3">
                 <label for="cidade" class="form-label">Cidade</label>
-                <input type="text" class="form-control" id="cidade" name="cidade" required value="<? funcoes::setValue($dados, 'cidade') ?>">
+                <input type="text" class="form-control" id="cidade" name="cidade" required value="<?= funcoes::setValue($dados, 'cidade') ?>">
             </div>
 
             <div class="col-3 mt-3">
@@ -90,7 +84,7 @@ if ($_GET['acao'] != 'insert') {
                     <option value="Rio Grande do Sul"  <?= Funcoes::setValue($dados, 'estado') == "Rio Grande do Sul" ? 'selected' : '' ?>>RS</option>
                     <option value="Rondônia"  <?= Funcoes::setValue($dados, 'estado') == "Rondônia" ? 'selected' : '' ?>>RO</option>
                     <option value="Roraima"  <?= Funcoes::setValue($dados, 'estado') == "Roraima" ? 'selected' : '' ?>>RR</option>
-                    <option value="Santa Catarina"  <?= Funcoes::setValue($dados, 'estado') == "Santa Cantarina" ? 'selected' : '' ?>>SC</option>
+                    <option value="Santa Catarina"  <?= Funcoes::setValue($dados, 'estado') == "Santa Catarina" ? 'selected' : '' ?>>SC</option>
                     <option value="São Paulo"  <?= Funcoes::setValue($dados, 'estado') == "São Paulo" ? 'selected' : '' ?>>SP</option>
                     <option value="Sergipe"  <?= Funcoes::setValue($dados, 'estado') == "Sergipe" ? 'selected' : '' ?>>SE</option>
                     <option value="Tocantins"  <?= Funcoes::setValue($dados, 'estado') == "Tocantins" ? 'selected' : '' ?>>TO</option>      
@@ -99,17 +93,17 @@ if ($_GET['acao'] != 'insert') {
 
             <div class="col-3 mt-3">
                 <label for="cep" class="form-label">CEP</label>
-                <input type="text" class="form-control" id="cep" name="cep" required value="<? funcoes::setValue($dados, 'cep') ?>">
+                <input type="text" class="form-control" id="cep" name="cep" required value="<?= funcoes::setValue($dados, 'cep') ?>">
             </div>
             
             <div class="col-9 mt-3">
                 <label for="logradouro" class="form-label">Logradouro</label>
-                <input type="text" class="form-control" id="logradouro" name="logradouro" required value="<? funcoes::setValue($dados, 'logradouro') ?>">
+                <input type="text" class="form-control" id="logradouro" name="logradouro" required value="<?= funcoes::setValue($dados, 'logradouro') ?>">
             </div>
 
             <div class="col-3 mt-3">
                 <label for="numero" class="form-label">Número</label>
-                <input type="text" class="form-control" id="numero" name="numero" required value="<? funcoes::setValue($dados, 'numero') ?>">
+                <input type="text" class="form-control" id="numero" name="numero" required value="<?= funcoes::setValue($dados, 'numero') ?>">
             </div>
 
             <div class="col-12 mt-3">
@@ -130,14 +124,14 @@ if ($_GET['acao'] != 'insert') {
         </div>
 
         <div class="row mt-3">
-            <div class="col-12">
-                <a href="index.php?pagina=listaAluno" 
-                    class="btn btn-outline-secondary btn-sm">
+            <div class="col-12 text-end">
+                <a href="dashboard.php?pagina=listaAluno" 
+                    class="btn-lista">
                     Voltar
                 </a>
 
                 <?php if ($_GET['acao'] != 'view'): ?>
-                    <button type="submit" class="btn btn-primary btn-sm">Confirmar</button>
+                    <button type="submit" class="btn-lista">Confirmar</button>
                 <?php endif; ?>
             </div>
         </div>
