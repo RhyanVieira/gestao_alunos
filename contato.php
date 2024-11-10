@@ -1,4 +1,4 @@
-<div class="container text-center header-contato">
+<div class="container text-center header-pages">
     <h1>Nossos Contatos</h1>
 </div>
 <section class="container mt-5 mb-5 contato">

@@ -1,4 +1,4 @@
-<div class="container text-center header-blog">
+<div class="container text-center header-pages">
     <h1>Blog de Captação e Gestão de Alunos</h1>
     <p>Explore as últimas notícias e artigos para otimizar a gestão acadêmica e impulsionar sua instituição.</p>
 </div>

@@ -13,7 +13,7 @@
             <div class="carousel-caption">
                 <h5>Estratégias Inovadoras para Aumentar a Captação de Alunos</h5>
                 <p>Como ajudamos instituições a superar desafios.</p>
-                <p><a href="#" class="page-button" type="button">Saiba Mais</a></p>
+                <p><a href="index.php?pagina=blog" class="page-button" type="button">Saiba Mais</a></p>
             </div>
         </div>
         <div class="carousel-item">
@@ -21,7 +21,7 @@
             <div class="carousel-caption">
                 <h5>Experiência do Aluno</h5>
                 <p>Melhorando a experiência do aluno com ferramentas de suporte digital</p>
-                <p><a href="#" class="page-button" type="button">Saiba Mais</a></p>
+                <p><a href="index.php?pagina=blog" class="page-button" type="button">Saiba Mais</a></p>
             </div>
         </div>
         <div class="carousel-item">
@@ -29,7 +29,7 @@
             <div class="carousel-caption">
                 <h5>Automação</h5>
                 <p>Como a automação pode transformar a gestão acadêmica na sua instituição</p>
-                <p><a href="#" class="page-button" type="button">Saiba Mais</a></p>
+                <p><a href="index.php?pagina=blog" class="page-button" type="button">Saiba Mais</a></p>
             </div>
         </div>
     </div>
@@ -60,7 +60,7 @@
                     <p>Maximize o potencial de sua instituição com uma gestão simplificada e inteligente.
                         Transforme a administração escolar em um aliado para o aprendizado e o sucesso dos alunos.
                     </p>
-                    <a href="index.php?pagina=sobrenos" class="page-button" type="button">Saiba Mais</a>
+                    <a href="index.php?pagina=sobreNos" class="page-button" type="button">Saiba Mais</a>
                 </div>
             </div>
         </div>
@@ -74,53 +74,53 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="section-header text-center pb-5">
-                    <h2>Nossos Serviços</h2>
+                    <h2 style="text-transform: uppercase;">Nossos Serviços</h2>
                     <p>Nossa plataforma oferece soluções que simplificam processos administrativos,<br>melhoram a comunicação e ajudam a acompanhar o desempenho dos alunos.</p>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-12 col-md-12 col-lg-4">
-                <a href="" class="card-link">
+                <a href="index.php?pagina=servicos" class="card-link">
                     <div class="card text-white text-center pb-2">
                         <div class="card-body">
                             <i class="bi bi-laptop"></i>
                             <h3 class="card-title">Captação Eficiente de Alunos</h3>
-                            <p class="lead">Nossa plataforma permite uma captação simplificada e eficiente de novos alunos.
-                                Com ferramentas de automação, segmentação e personalização, atraímos o público certo e otimizamos
+                            <p class="lead">Nossa plataforma permite uma captação simplificada e eficiente de novos alunos. 
+                                Com ferramentas de automação, segmentação e personalização, atraímos o público certo e otimizamos 
                                 os esforços para alcançar quem realmente se interessa pela sua instituição, reduzindo custos e melhorando os resultados de cada campanha.</p>
                         </div>
                     </div>
                 </a>
             </div>
             <div class="col-12 col-md-12 col-lg-4">
-                <a href="" class="card-link">
+                <a href="index.php?pagina=servicos" class="card-link">
                     <div class="card text-white text-center pb-2">
                         <div class="card-body">
                             <i class="bi bi-intersect"></i>
                             <h3 class="card-title">Gestão Integrada e Inteligente</h3>
-                            <p class="lead">Organize, gerencie e acompanhe o histórico dos alunos em uma plataforma centralizada.
-                                Com funcionalidades para controle de matrículas, acompanhamento de desempenho e geração de relatórios
+                            <p class="lead">Organize, gerencie e acompanhe o histórico dos alunos em uma plataforma centralizada. 
+                                Com funcionalidades para controle de matrículas, acompanhamento de desempenho e geração de relatórios 
                                 detalhados, ajudamos a garantir uma experiência de gestão eficiente e completa, trazendo praticidade e agilidade para o dia a dia.</p>
                         </div>
                     </div>
                 </a>
             </div>
             <div class="col-12 col-md-12 col-lg-4">
-                <a href="" class="card-link">
+                <a href="index.php?pagina=servicos" class="card-link">
                     <div class="card text-white text-center pb-2">
                         <div class="card-body">
                             <i class="bi bi-person-check"></i>
                             <h3 class="card-title">Comunicação e Fidelização</h3>
-                            <p class="lead">Aumente a satisfação e retenção dos alunos com comunicação personalizada e eficiente.
-                                Nossa plataforma possibilita o envio de notificações, atualizações e mensagens em tempo real,
+                            <p class="lead">Aumente a satisfação e retenção dos alunos com comunicação personalizada e eficiente. 
+                                Nossa plataforma possibilita o envio de notificações, atualizações e mensagens em tempo real, 
                                 mantendo alunos e responsáveis informados e engajados. Fidelize alunos e garanta uma jornada satisfatória do início ao fim.</p>
                         </div>
-                    </div>
+                    </div>    
                 </a>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 </section>
 <hr class="custom-line">
@@ -132,10 +132,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="section-header text-center pb-5">
-                    <h2>Nossas Propostas</h2>
-                    <p>O sistema de captação e gestão de alunos foi desenvolvido para otimizar todos os processos de uma instituição de ensino,
-                        <br> desde a inscrição até a formação do aluno.
-                    </p>
+                    <h2 style="text-transform: uppercase;">Nossas Propostas</h2>
+                    <p>O sistema de captação e gestão de alunos foi desenvolvido para otimizar todos os processos de uma instituição de ensino, 
+                    <br> desde a inscrição até a formação do aluno.</p>
                 </div>
             </div>
         </div>
@@ -147,10 +146,9 @@
                             <img src="" class="img-fluid" alt="">
                         </div>
                         <h3 class="card-title">Painel Administrativo Completo</h3>
-                        <p class="lead">Controle total de turmas, professores e alunos, tudo em um só lugar.
-                            O painel permite uma organização prática do calendário acadêmico, com controle de frequência e gestão de notas,
+                        <p class="lead">Controle total de turmas, professores e alunos, tudo em um só lugar. 
+                            O painel permite uma organização prática do calendário acadêmico, com controle de frequência e gestão de notas, 
                             garantindo que a administração seja fluida e eficiente.</p>
-                        <a href="#" class="page-button" type="button">Ler Mais</a>
                     </div>
                 </div>
             </div>
@@ -161,9 +159,8 @@
                             <img src="" class="img-fluid" alt="">
                         </div>
                         <h3 class="card-title">Monitoramento do Desempenho Escolar</h3>
-                        <p class="lead">Facilite o acompanhamento do desempenho dos alunos com lançamentos de notas e feedbacks personalizados.
+                        <p class="lead">Facilite o acompanhamento do desempenho dos alunos com lançamentos de notas e feedbacks personalizados. 
                             Relatórios de progresso podem ser acessados por pais e responsáveis, e gráficos detalhados permitem comparações ao longo do ano letivo.</p>
-                        <a href="#" class="page-button" type="button">Ler Mais</a>
                     </div>
                 </div>
             </div>
@@ -174,11 +171,13 @@
                             <img src="" class="img-fluid" alt="">
                         </div>
                         <h3 class="card-title">Gestão Financeira Eficiente</h3>
-                        <p class="lead">Simplifique o controle financeiro da instituição. Gerencie mensalidades e boletos, acompanhe o histórico de pagamentos e inadimplência,
+                        <p class="lead">Simplifique o controle financeiro da instituição. Gerencie mensalidades e boletos, acompanhe o histórico de pagamentos e inadimplência, 
                             e gere relatórios detalhados para uma visão clara da saúde financeira da instituição.</p>
-                        <a href="#" class="page-button" type="button">Ler Mais</a>
                     </div>
                 </div>
+            </div>
+            <div class="col-12">
+                <a href="index.php?pagina=propostas" class="page-button button-propostas" type="button">Ler Mais</a>
             </div>
         </div>
     </div>
@@ -191,8 +190,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="section-header text-center pb-5">
-                    <h2>Nosso Time</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur <br>adipisicing elit. Non, quo.</p>
+                    <h2 style="text-transform: uppercase;">Nosso Time</h2>
+                    <p>Nosso time de desenvolvedores júnior é formado por profissionais talentosos e em constante evolução, apaixonados por aprender e crescer na área de tecnologia. Sob a orientação de mentores experientes, eles trazem novas ideias e uma abordagem criativa para o desenvolvimento de soluções inovadoras. Embora ainda em fase de aprendizado, nossa equipe está sempre disposta a enfrentar desafios, trabalhar em equipe e entregar resultados com qualidade e dedicação. Com foco no desenvolvimento contínuo, buscamos construir soluções que atendam às necessidades de nossos clientes e contribuir para o sucesso da sua instituição.</p>
                 </div>
             </div>
         </div>
@@ -202,8 +201,7 @@
                     <div class="card-body">
                         <img src="img/team-1.jpg" alt="" class="img-fluid rounded-circle">
                         <h3 class="card-title py-2">Lucas Gonzáles</h3>
-                        <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi ipsam
-                            nostrum illo tempora esse quibusdam.</p>
+                        <p class="card-text">Lucas, desenvolvedor júnior especializado em HTML e CSS, trabalhou na construção da interface visual do projeto acadêmico, trazendo uma experiência de usuário fluida e responsiva. Ele aplicou seus conhecimentos para transformar o design em páginas interativas, aprimorando a acessibilidade e a navegação.</p>
                         <p class="socials">
                             <a href=""><i class="bi bi-twitter text-dark mx-1"></i></a>
                             <a href=""><i class="bi bi-facebook text-dark mx-1"></i></a>
@@ -218,8 +216,7 @@
                     <div class="card-body">
                         <img src="img/team-2.jpg" alt="" class="img-fluid rounded-circle">
                         <h3 class="card-title py-2">João Felipe</h3>
-                        <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi ipsam
-                            nostrum illo tempora esse quibusdam.</p>
+                        <p class="card-text">João contribuiu para o projeto acadêmico com suas habilidades em HTML e CSS, focando no design visual e na usabilidade. Sua atuação foi essencial para garantir uma interface atraente e intuitiva, onde estética e funcionalidade se alinham para facilitar a interação do usuário.</p>
                         <p class="socials">
                             <a href=""><i class="bi bi-twitter text-dark mx-1"></i></a>
                             <a href=""><i class="bi bi-facebook text-dark mx-1"></i></a>
@@ -234,8 +231,7 @@
                     <div class="card-body">
                         <img src="img/team-3.jpg" alt="" class="img-fluid rounded-circle">
                         <h3 class="card-title py-2">Rebeca Bertolino</h3>
-                        <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi ipsam
-                            nostrum illo tempora esse quibusdam.</p>
+                        <p class="card-text">Rebeca ficou encarregada do banco de dados MySQL no projeto acadêmico, onde foi responsável por organizar e gerenciar as informações essenciais da aplicação. Ela criou estruturas eficientes para armazenamento de dados, garantindo que o sistema pudesse acessar informações com rapidez e precisão.</p>
                         <p class="socials">
                             <a href=""><i class="bi bi-twitter text-dark mx-1"></i></a>
                             <a href=""><i class="bi bi-facebook text-dark mx-1"></i></a>
@@ -250,8 +246,7 @@
                     <div class="card-body">
                         <img src="img/team-4.jpg" alt="" class="img-fluid rounded-circle">
                         <h3 class="card-title py-2">Rhyan Vieira</h3>
-                        <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi ipsam
-                            nostrum illo tempora esse quibusdam.</p>
+                        <p class="card-text">Rhyan trabalhou na implementação da lógica do servidor em PHP, integrando o banco de dados ao front-end para que todas as funcionalidades operassem de forma coesa. Ele foi responsável por tornar a aplicação robusta e funcional, assegurando que o projeto fosse executado de forma ágil e segura.</p>
                         <p class="socials">
                             <a href=""><i class="bi bi-twitter text-dark mx-1"></i></a>
                             <a href=""><i class="bi bi-facebook text-dark mx-1"></i></a>

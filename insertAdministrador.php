@@ -10,7 +10,7 @@ if (isset($_POST['nome_completo'])) {
 
     try {
         $result = $db->dbInsert("INSERT INTO administrador
-                                (nome_completo, cpf, telefone, nivel, email, senha)
+                                (nome_completo, cpf, telefone, nivel, email, senha)s
                                 VALUES (?, ?, ?, ?, ?, ?)"
                                 ,[
                                     $_POST['nome_completo'],

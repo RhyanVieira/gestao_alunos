@@ -17,6 +17,7 @@ $current_page = basename($_SERVER['REQUEST_URI']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestão de Alunos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
@@ -42,13 +43,13 @@ $current_page = basename($_SERVER['REQUEST_URI']);
                             <a class="nav-link mx-lg-2 <?= ($current_page == 'index.php' || $current_page == '') ? 'active' : '' ?> " aria-current="page" href="index.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2 <?= ($current_page == 'index.php?pagina=sobrenos') ? 'active' : '' ?>" href="index.php?pagina=sobrenos">Sobre Nós</a>
+                            <a class="nav-link mx-lg-2 <?= ($current_page == 'index.php?pagina=sobrenos') ? 'active' : '' ?>" href="index.php?pagina=sobreNos">Sobre Nós</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2 <?= ($current_page == 'index.php?pagina=servicos') ? 'active' : '' ?>" href="#">Serviços</a>
+                            <a class="nav-link mx-lg-2 <?= ($current_page == 'index.php?pagina=servicos') ? 'active' : '' ?>" href="index.php?pagina=servicos">Serviços</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2 <?= ($current_page == 'index.php?pagina=propostas') ? 'active' : '' ?>" href="#">Propostas</a>
+                            <a class="nav-link mx-lg-2 <?= ($current_page == 'index.php?pagina=propostas') ? 'active' : '' ?>" href="index.php?pagina=propostas">Propostas</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link mx-lg-2 <?= ($current_page == 'index.php?pagina=blog') ? 'active' : '' ?>" href="index.php?pagina=blog">Blog</a>
@@ -62,9 +63,9 @@ $current_page = basename($_SERVER['REQUEST_URI']);
             <div class="dropstart">
                 <a href="#" class="login-button" type="button" data-bs-toggle="dropdown" aria-expanded="false">Login</a>
                 <ul class="dropdown-menu dropdown-style">
-                    <li><a class="dropdown-item dropdown-item-style" href="#">Portal do Aluno</a></li>
-                    <li><a class="dropdown-item dropdown-item-style" href="#">Portal do Professor</a></li>
-                    <li><a class="dropdown-item dropdown-item-style" href="#">Área Administrativa</a></li>
+                    <li><a class="dropdown-item dropdown-item-style" href="index.php?pagina=loginViewAluno">Portal do Aluno</a></li>
+                    <li><a class="dropdown-item dropdown-item-style" href="index.php?pagina=loginViewProfessor">Portal do Professor</a></li>
+                    <li><a class="dropdown-item dropdown-item-style" href="index.php?pagina=loginViewAdm">Área Administrativa</a></li>
                 </ul>
             </div>
             <button class="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
@@ -73,9 +74,7 @@ $current_page = basename($_SERVER['REQUEST_URI']);
         </div>
     </nav>
 
-    <div class="container">
-        <?= Funcoes::mensagem(); ?>
-    </div>
+
 
     <?php
 
@@ -104,10 +103,12 @@ $current_page = basename($_SERVER['REQUEST_URI']);
                     <div class="single-box">
                         <h2>Links Rápidos</h2>
                         <ul>
-                            <li><a href="#">Início</a></li>
-                            <li><a href="#">Sobre Nós</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Contato</a></li>
+                            <li><a href="index.php">Início</a></li>
+                            <li><a href="index.php?pagina=sobreNos">Sobre Nós</a></li>
+                            <li><a href="index.php?pagina=servicos">Serviços</a></li>
+                            <li><a href="index.php?pagina=propostas">Propostas</a></li>
+                            <li><a href="index.php?pagina=blog">Blog</a></li>
+                            <li><a href="index.php?pagina=contato">Contato</a></li>
                         </ul>
                         </ul>
                     </div>
@@ -116,9 +117,9 @@ $current_page = basename($_SERVER['REQUEST_URI']);
                     <div class="single-box">
                         <h2>Recursos</h2>
                         <ul>
-                            <li><a href="#">Portal do Aluno</a></li>
-                            <li><a href="#">Portal do Professor</a></li>
-                            <li><a href="#">Suporte</a></li>
+                            <li><a href="index.php?pagina=loginViewAluno">Portal do Aluno</a></li>
+                            <li><a href="index.php?pagina=loginViewProfessor">Portal do Professor</a></li>
+                            <li><a href="index.php?pagina=loginViewAdm">Área Administrativa</a></li>
                             <li><a href="#">Política de Privacidade</a></li>
                         </ul>
                     </div>
@@ -146,7 +147,8 @@ $current_page = basename($_SERVER['REQUEST_URI']);
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
 
 </html>
