@@ -17,59 +17,62 @@ require_once "lib/funcoes.php";
 
 $db = new Database();
 
-$data = $db->dbSelect("SELECT t.*, c.curso AS nome_curso, adm.nome_completo AS nome_administrador 
-                        FROM turma AS t 
-                        INNER JOIN curso AS c ON c.id_curso = t.id_curso 
-                        INNER JOIN administrador AS adm ON adm.id_administrador = t.id_administrador
-                        WHERE adm.nivel = 2 
-                        ORDER BY t.nome_turma");
+$data = $db->dbSelect("SELECT * FROM turma ORDER BY id_curso");
 
 ?>
 
-<div class="container mt-5">
+<div class="container-fluid px-4">
 
     <div class="row">
         <div class="col-10">
-            <h3>Lista de Turmas</h3>
+            <h3 class="line-under">Lista de Turmas</h3>
         </div>
-    </div>
-    <div class="col-2 text-end">
-        <a href="#" class="btn btn-outline-secondary btn-sm" title="nova">Novo</a>
+        <div class="col-2 text-end">
+            <a href="dashboard.php?pagina=formTurma&acao=insert" class="btn-new" title="nova">Nova</a>
+        </div>
     </div>
 
     <?= funcoes::mensagem() ?>
 
-    <table class="table table-striped table-hover table-bordered table-responsive-sm">
-        <thead>
-            <tr>Id</tr>
-            <tr>Nome</tr>
-            <tr>Ano/Semestre</tr>
-            <tr>Curso</tr>
-            <tr>Coordenador</tr>
-        </thead>
-
-        <tbody>
-
-            <?php if (count($data) > 0) : ?>
-                <?php foreach ($data as $row): ?>
-                    <tr>
-                        <td><?= $row['id_turma'] ?></td>
-                        <td><?= $row['nome_turma'] ?></td>
-                        <td><?= $row['ano_semestre'] ?></td>
-                        <td><?= $row['nome_curso'] ?></td>
-                        <td><?= $row['nome_administrador'] ?></td>
-                        <td>
-                            <a href="index.php?pagina=formDisciplina&acao=update&id=<?= $row['id'] ?>" class="btn btn-outline-primary btn-sm" title="Alteração">Alterar</a>
-                            <a href="index.php?pagina=formDisiciplina&acao=delete&id=<?= $row['id'] ?>" class="btn btn-outline-primary btn-sm" title="Exclusão">Excluir</a>
-                            <a href="index.php?pagina=formDisciplina&acao=view&id=<?= $row['id'] ?>" class="btn btn-outline-primary btn-sm" title="Visualização">Visualizar</a>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <tr>
-                    <td colspan="6">Nenhum registro encontrado.</td>
-                </tr>
-            <?php endif; ?>             
-        </tbody>
-    </table>
+    <div class="row my-5 area-table-lista" >
+        <h3 class="fs-4 mb-3"></h3>
+        <div class="col">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col" width="50">Id</th> 
+                            <th scope="col">Ano - Semestre</th>
+                            <th scope="col">Turma</th>
+                            <th scope="col">Curso</th>
+                            <th scope="col">Coordenador</th>
+                            <th scope="col" width="300">Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php if (count($data) > 0) : ?>
+                        <?php foreach ($data as $row): ?>
+                            <tr>
+                                <td><?= $row['id_turma'] ?></td>
+                                <td><?= $row['ano_semestre'] ?></td>
+                                <td><?= $row['nome_turma'] ?></td>
+                                <td><?= $row['id_curso'] ?></td>
+                                <td><?= $row['id_administrador'] ?></td>
+                                <td>
+                                    <a href="dashboard.php?pagina=formTurma&acao=update&id_turma=<?= $row['id_turma'] ?>" class="btn-update" title="Alteração">Alterar</a>
+                                    <a href="dashboard.php?pagina=formTurma&acao=delete&id_turma=<?= $row['id_turma'] ?>" class="btn-delete" title="Exclusão">Excluir</a>
+                                    <a href="dashboard.php?pagina=formTurma&acao=view&id_turma=<?= $row['id_turma'] ?>" class="btn-view" title="Visualização">Visualizar</a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="6">Nenhum registro encontrado.</td>
+                        </tr>
+                    <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>

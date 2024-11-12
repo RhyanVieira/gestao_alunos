@@ -10,23 +10,29 @@ if (isset($_POST['valor'])) {
     $db = new Database();
 
     try {
+        $data_pagamento = !empty($_POST['data_pagamento']) ? $_POST['data_pagamento'] : NULL;
+
         $result = $db->dbUpdate("UPDATE mensalidade
                                 SET valor = ?, data_vencimento = ?, data_pagamento = ?, status_pagamento = ?, id_aluno = ?, id_turma = ?
-                                WHERE id_mensalidade = ?"
-                                ,[
+                                WHERE id_mensalidade = ?",
+                                [
                                     Funcoes::strDecimais($_POST['valor']),
-                                    Funcoes::converterDate($_POST['data_vencimento']),
-                                    Funcoes::converterDate($_POST['data_pagamento']),
+                                    $_POST['data_vencimento'],
+                                    $data_pagamento,
                                     $_POST['status_pagamento'],
                                     $_POST['id_aluno'],
-                                    $_POST['id_turma']
+                                    $_POST['id_turma'],
+                                    $_POST['id_mensalidade']
                                 ]);
         
         if ($result > 0) {  
             $_SESSION['msgSuccess'] = "Mensalidade atualizada.";
         }
 
-    } catch (Exception $e) {
-        $_SESSION['msgError'] = "ERROR: " . $e->getMessage();
+    } catch (Exception $ex) {
+        $_SESSION['msgError'] = "ERROR: " . $ex->getMessage();
     }
 } 
+
+return header("Location: dashboard.php?pagina=listaMensalidade");
+exit;

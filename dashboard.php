@@ -22,6 +22,17 @@ $current_page = basename($_SERVER['REQUEST_URI']);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/styleDashboard.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/jqueryMask.js"></script>
+    <script src="assets/vendors/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="assets/vendors/nice-select/jquery.nice-select.min.js"></script>
+    <script src="assets/vendors/Magnific-Popup/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/jquery.ajaxchimp.min.js"></script>
+    <script src="assets/js/mail-script.js"></script>
+    <script src="assets/js/main.js"></script>        
+        
+    <script src="utilities/DataTables/datatables.min.js" type="text/javascript"></script>
     <title>SmartClass | ADM</title>
 </head>
 
@@ -42,13 +53,19 @@ $current_page = basename($_SERVER['REQUEST_URI']);
                 <a href="dashboard.php?pagina=listaProfessor" class="list-group-item list-group-item-action bg-transparent fw-bold <?= ($current_page == 'dashboard.php?pagina=listaProfessor') ? 'active' : '' ?>">
                     <i class="bi bi-person-video me-2"></i>Professores
                 </a>
-                <a href="dashboard.php?pagina=listaCursos" class="list-group-item list-group-item-action bg-transparent fw-bold <?= ($current_page == 'dashboard.php?pagina=listaCursos') ? 'active' : '' ?>">
+                <a href="dashboard.php?pagina=listaCurso" class="list-group-item list-group-item-action bg-transparent fw-bold <?= ($current_page == 'dashboard.php?pagina=listaCurso') ? 'active' : '' ?>">
                     <i class="bi bi-journal-bookmark me-2"></i>Cursos
                 </a>
-                <a href="dashboard.php?pagina=listaAdministradores" class="list-group-item list-group-item-action bg-transparent fw-bold <?= ($current_page == 'dashboard.php?pagina=listaAdministradores') ? 'active' : '' ?>">
+                <a href="dashboard.php?pagina=listaAdministrador" class="list-group-item list-group-item-action bg-transparent fw-bold <?= ($current_page == 'dashboard.php?pagina=listaAdministrador') ? 'active' : '' ?>">
                     <i class="bi bi-person-bounding-box me-2"></i>Administradores
                 </a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">
+                <a href="dashboard.php?pagina=listaTurma" class="list-group-item list-group-item-action bg-transparent fw-bold <?= ($current_page == 'dashboard.php?pagina=listaTurma') ? 'active' : '' ?>">
+                    <i class="bi bi-calendar me-2"></i>Turmas
+                </a>
+                <a href="dashboard.php?pagina=listaMensalidade" class="list-group-item list-group-item-action bg-transparent fw-bold <?= ($current_page == 'dashboard.php?pagina=listaMensalidade') ? 'active' : '' ?>">
+                    <i class="bi bi-cash-stack me-2"></i>Mensalidades
+                </a>
+                <a href="logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">
                     <i class="bi bi-box-arrow-left me-2"></i>Logout</a>
             </div>
         </div>
@@ -72,17 +89,20 @@ $current_page = basename($_SERVER['REQUEST_URI']);
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-person me-2"></i><?= substr($_SESSION['userName'], 0, 15) ?></a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
+                                <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
                             </ul>
                         </li>
                     </ul>
                 </div>
             </nav>
 
+            <div class="container">
+                <?= Funcoes::mensagem(); ?>
+            </div>
+            
             <?php
 
-            $pagina = 'painelDashboard';
+            $pagina = 'dashboardAdm';
 
             if (isset($_GET['pagina'])) {
                 $pagina = $_GET['pagina'];

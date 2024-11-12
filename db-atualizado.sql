@@ -43,8 +43,11 @@ CREATE TABLE curso (
     descricao LONGTEXT,
     duracao_curso INT NOT NULL,
     valor_curso DECIMAL(10 , 2) NOT NULL,
+    status_registro INT NOT NULL DEFAULT '1' COMMENT '1=Ativo;2=Inativo',
     PRIMARY KEY (id_curso)
 ) ENGINE = InnoDB;
+
+
 
 CREATE TABLE administrador (
     id_administrador INT AUTO_INCREMENT NOT NULL,
@@ -148,6 +151,131 @@ CREATE TABLE matricula (
     CONSTRAINT fk4_turma FOREIGN KEY (id_turma)
         REFERENCES turma (id_turma)
 ) ENGINE = InnoDB;
+
+CREATE TABLE sobre_nos (
+    id_sobre_nos INT AUTO_INCREMENT NOT NULL,
+    icone_bootstrap VARCHAR(30) NOT NULL,
+    subtitulo VARCHAR(50) NOT NULL,
+    texto TEXT NOT NULL,
+    posicao INT NOT NULL DEFAULT '1',
+    status_registro INT NOT NULL DEFAULT '1' COMMENT '1=Ativo, 2=Inativo',
+    PRIMARY KEY (id_sobre_nos)
+) ENGINE = InnoDB;
+
+CREATE TABLE servicos (
+    id_servicos INT AUTO_INCREMENT NOT NULL,
+    icone_bootstrap VARCHAR(30) NOT NULL,
+    subtitulo VARCHAR(50) NOT NULL,
+    texto TEXT NOT NULL,
+    texto_card TEXT NOT NULL,
+    posicao INT NOT NULL DEFAULT '1',
+    status_registro INT NOT NULL DEFAULT '1' COMMENT '1=Ativo, 2=Inativo',
+    PRIMARY KEY (id_servicos)
+) ENGINE = InnoDB;
+
+CREATE TABLE propostas (
+    id_propostas INT AUTO_INCREMENT NOT NULL,
+    icone_bootstrap VARCHAR(30) NOT NULL,
+    subtitulo VARCHAR(50) NOT NULL,
+    texto TEXT NOT NULL,
+    texto_card TEXT NOT NULL,
+    posicao INT NOT NULL DEFAULT '1',
+    imagem VARCHAR(200) NOT NULL,
+    status_registro INT NOT NULL DEFAULT '1' COMMENT '1=Ativo, 2=Inativo',
+    PRIMARY KEY (id_propostas)
+) ENGINE = InnoDB;
+
+CREATE TABLE noticias (
+    id_noticias INT AUTO_INCREMENT NOT NULL,
+    titulo VARCHAR(50) NOT NULL,
+    texto TEXT NOT NULL,
+    texto_card TEXT NOT NULL,
+	data_postagem TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, 
+    imagem VARCHAR(200) NOT NULL,
+    status_registro INT NOT NULL DEFAULT '1' COMMENT '1=Ativo, 2=Inativo',
+    PRIMARY KEY (id_noticias)
+) ENGINE = InnoDB;
+
+CREATE TABLE administrador_pagina (
+	id_administrador_pagina INT AUTO_INCREMENT NOT NULL,
+    nome VARCHAR(75) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    senha VARCHAR(250) NOT NULL,
+    statusRegistro INT NOT NULL DEFAULT '1' COMMENT '1=Ativo;2=Inativo',
+    PRIMARY KEY (id_administrador_pagina),
+    UNIQUE INDEX email_UNIQUE (email ASC) VISIBLE
+) ENGINE = InnoDB;
+
+
+INSERT INTO propostas (icone_bootstrap, subtitulo, texto, posicao, imagem, status_registro) 
+VALUES
+('bi bi-speedometer2', 'Painel Administrativo Completo', '<p>Tenha controle total sobre todas as operações acadêmicas da sua instituição com o nosso Painel Administrativo. Em uma única plataforma, você pode gerenciar turmas, professores, alunos e muito mais, de forma prática e intuitiva. O painel oferece uma visão clara e consolidada de todas as informações, permitindo que você organize o calendário acadêmico, controle frequência e gerencie notas dos alunos de maneira eficiente e sem complicação.
+        </p>
+        <p>Nosso sistema foi desenvolvido para otimizar a administração escolar, tornando processos como o lançamento de notas, o controle de presença e a comunicação com os responsáveis mais rápidos e sem erros. O objetivo é proporcionar uma gestão fluida, onde as informações estão sempre ao alcance de um clique, sem sobrecarregar a equipe administrativa.
+        </p>', 1, '', 1),
+('bi bi-graph-up', 'Monitoramento de Desempenho Escolar', '<p>Facilite o acompanhamento do desempenho escolar de cada aluno com nossa plataforma de monitoramento avançado. A SmartClass permite que você registre e acompanhe notas e feedbacks personalizados, proporcionando um panorama completo do progresso de cada estudante. Relatórios detalhados de desempenho podem ser gerados e compartilhados com pais e responsáveis, permitindo uma comunicação eficaz sobre o desempenho acadêmico de seus filhos.
+        </p>
+        <p>Acompanhamentos periódicos são facilitados através de gráficos interativos e comparações de dados ao longo do ano letivo, oferecendo insights valiosos para professores e gestores. Nossa plataforma permite que a gestão de desempenho seja precisa, objetiva e fácil de entender, ajudando a promover uma educação mais personalizada e de qualidade.
+        </p>', 2, '', 1),
+('bi bi-cash-stack', 'Gestão Financeira Eficiente', '<p>Com a Gestão Financeira Eficiente da SmartClass, a administração das finanças da sua instituição torna-se mais simples e organizada. A plataforma permite o controle de mensalidades, emissão de boletos e acompanhamento do histórico de pagamentos e inadimplência de forma automática, garantindo uma visão clara da saúde financeira da sua instituição.
+        </p>
+        <p>Além disso, com nossos relatórios financeiros detalhados, você pode visualizar facilmente o fluxo de caixa e analisar a performance financeira ao longo do tempo. A SmartClass proporciona mais controle e agilidade, permitindo que você tome decisões financeiras mais informadas e seguras, com menos esforço administrativo.
+        </p>
+    </div>', 3, '', 1);
+
+
+INSERT INTO servicos (icone_bootstrap, subtitulo, texto, texto_card, posicao, status_registro) 
+VALUES
+('bi bi-laptop', 'Captação Eficiente de Alunos', '<p>A captação de alunos nunca foi tão fácil e eficaz. Com a plataforma SmartClass, você tem acesso a um conjunto completo de ferramentas de automação e segmentação que tornam a atração de novos alunos mais estratégica e assertiva. 
+            Utilizamos tecnologia de ponta para identificar o perfil ideal do estudante, segmentando campanhas publicitárias de acordo com comportamentos e interesses específicos.
+        </p>
+        <p>A automação das campanhas permite que você alcance os potenciais alunos de forma personalizada, com mensagens ajustadas aos seus interesses, tudo isso sem sobrecarregar sua equipe. Nossa plataforma otimiza as campanhas em tempo real, 
+            ajustando os anúncios conforme os dados coletados, aumentando a taxa de conversão e reduzindo significativamente os custos de captação. 
+            Isso garante que você tenha um fluxo constante de novos alunos com um retorno sobre investimento (ROI) cada vez maior.
+        </p>', 'Nossa plataforma permite uma captação simplificada e eficiente de novos alunos. 
+                                    Com ferramentas de automação, segmentação e personalização, atraímos o público certo e otimizamos 
+                                    os esforços para alcançar quem realmente se interessa pela sua instituição, reduzindo custos e melhorando os resultados de cada campanha.', 1, 1),
+('bi bi-intersect', 'Gestão Integrada e Inteligente', '<p>Gerenciar a vida acadêmica dos alunos não precisa ser um desafio. A SmartClass oferece uma solução completa e integrada para o gerenciamento acadêmico, com uma plataforma centralizada que simplifica a administração e melhora a eficiência. 
+            Com ela, sua instituição pode acompanhar todas as etapas da jornada do aluno, desde a matrícula até a conclusão do curso.
+        </p>
+        <p>Nosso sistema de gestão inclui o controle de matrículas, onde você pode facilmente verificar o status de cada inscrição e gerenciar dados de forma segura e organizada. 
+            Além disso, oferece funcionalidades de acompanhamento de desempenho acadêmico, permitindo que você acesse relatórios detalhados sobre notas, frequência e progresso de cada estudante, com dados em tempo real.
+        </p>
+        <p>Para otimizar a gestão administrativa, nossa plataforma também gera relatórios customizados, que oferecem uma visão clara e detalhada do desempenho de cada área da instituição. Isso facilita a tomada de decisões estratégicas, melhorando o planejamento e o acompanhamento das metas institucionais. 
+            Nossa solução promove a agilidade e a praticidade no dia a dia da sua equipe, permitindo que mais tempo seja dedicado ao que realmente importa: o sucesso dos seus alunos.
+        </p>', 'Organize, gerencie e acompanhe o histórico dos alunos em uma plataforma centralizada. 
+                                Com funcionalidades para controle de matrículas, acompanhamento de desempenho e geração de relatórios 
+                                detalhados, ajudamos a garantir uma experiência de gestão eficiente e completa, trazendo praticidade e agilidade para o dia a dia.', 2, 1),
+('bi bi-person-check', 'Comunicação e Fidelização', '<p>A comunicação eficaz com os alunos e seus responsáveis é essencial para construir um relacionamento sólido e aumentar a satisfação. A SmartClass oferece ferramentas poderosas de comunicação que permitem um fluxo contínuo de informações, mantendo todos sempre informados e engajados.
+        </p>
+        <p>Com a nossa plataforma, você pode enviar notificações personalizadas, mensagens em tempo real e alertas sobre prazos importantes, eventos, resultados acadêmicos e muito mais. 
+            O envio de comunicados se torna mais ágil e direcionado, pois as mensagens podem ser segmentadas para grupos específicos de alunos, com base em suas necessidades ou interesses. Isso garante uma comunicação mais relevante e eficaz.
+        </p>
+        <p>Além disso, a plataforma possibilita a criação de canais de comunicação exclusivos para alunos e responsáveis, tornando o relacionamento mais próximo e acessível. 
+            Através desses canais, sua instituição pode fidelizar os alunos, promovendo uma jornada educacional mais satisfatória e personalizada, o que resulta em maior retenção e no fortalecimento da imagem da instituição. Com a SmartClass, você não apenas mantém seus alunos informados, mas também os motiva a continuar a sua trajetória educacional, criando um ciclo contínuo de sucesso.
+        </p>', 'Aumente a satisfação e retenção dos alunos com comunicação personalizada e eficiente. 
+                                Nossa plataforma possibilita o envio de notificações, atualizações e mensagens em tempo real, 
+                                mantendo alunos e responsáveis informados e engajados. Fidelize alunos e garanta uma jornada satisfatória do início ao fim.', 3, 1),
+('bi bi-person-check', 'Resumo dos Benefícios SmartClass', '<ul>
+            <li class="mb-2"><strong class="subtitulo-item">Automação de Marketing: </strong><span>Captação de alunos mais eficaz e sem desperdício de recursos.</span></li>
+            <li class="mb-2"><strong class="subtitulo-item">Personalização da Comunicação: </strong><span>Mensagens adaptadas ao perfil de cada aluno, aumentando a retenção e satisfação.</span></li>
+            <li class="mb-2"><strong class="subtitulo-item">Gestão Centralizada e Eficiente: </strong><span>Relatórios completos e funcionalidades para um gerenciamento ágil.</span></li>
+            <li class="mb-2"><strong class="subtitulo-item">Acompanhamento em Tempo Real: </strong><span> Análise do desempenho de alunos, ajudando na tomada de decisões estratégicas.</span></li>
+            <li class="mb-2"><strong class="subtitulo-item">Fidelização e Satisfação: </strong><span>Manutenção de um relacionamento contínuo e de confiança com alunos e responsáveis.</span></li>
+        </ul>', 'vazio', 4, 1);
+
+INSERT INTO sobre_nos (icone_bootstrap, subtitulo, texto, posicao, status_registro) 
+VALUES
+('bi bi-bullseye','Nossa Missão', '<p>Nossa missão é simplificar e otimizar todo o processo de captação e gestão de alunos, utilizando tecnologia de ponta para criar um sistema ágil, integrado e que atenda às necessidades específicas de cada instituição. Acreditamos que a educação é o alicerce para um futuro melhor, e nosso compromisso é ajudar as instituições de ensino a alcançar seu potencial máximo, garantindo uma gestão eficaz e um aumento contínuo no número de alunos matriculados.</p>', 1, 1),
+('bi bi-gear','O que fazemos', '<p>Oferecemos uma plataforma completa para captação e gestão de alunos, que inclui desde ferramentas para atrair novos estudantes até soluções para acompanhar o progresso e a retenção dos mesmos. Nosso sistema é projetado para simplificar o processo de inscrição, facilitar o acompanhamento acadêmico e financeiro e melhorar a comunicação entre a instituição e seus alunos.</p><p>Além disso, nossa equipe de especialistas trabalha ao lado das instituições, oferecendo consultoria e estratégias personalizadas para garantir que seus objetivos educacionais e financeiros sejam alcançados. Nossa solução se adapta às necessidades de cada cliente, seja uma escola de ensino básico, uma universidade ou uma instituição de cursos técnicos e profissionalizantes.</p>', 2, 1),
+('bi bi-lightbulb','Por que escolher a SmartClass?', '<ul>
+            <li class="mb-2"><strong class="subtitulo-item">Tecnologia de Ponta: </strong><span>Usamos as ferramentas mais avançadas para garantir que o processo de captação e gestão de alunos seja eficiente, seguro e de fácil acesso.</span></li>
+            <li class="mb-2"><strong class="subtitulo-item">Solulções Personalizadas: </strong><span>Entendemos que cada instituição tem suas próprias necessidades. Por isso, oferecemos soluções personalizadas, adaptando nossos serviços à realidade de cada cliente.</span></li>
+            <li class="mb-2"><strong class="subtitulo-item">Equipe Especializada: </strong><span>Contamos com um time altamente capacitado, com vasta experiência no setor educacional, para fornecer o melhor suporte e orientação.</span></li>
+        </ul>', 3, 1),
+('bi bi-file-text','Nosso Compromisso', '<p>Na SmartClass, temos um compromisso constante com a excelência e inovação, buscando sempre melhorar nossos serviços para atender melhor às necessidades de nossos clientes. Estamos aqui para ser seu parceiro de confiança, ajudando sua instituição a crescer e a impactar positivamente o futuro de seus alunos.</p>', 4, 1);
+
+INSERT INTO 
 
 INSERT INTO aluno (nome_completo, data_nascimento, cpf, cidade, estado, cep, logradouro, numero, telefone, email, senha, statusRegistro)
 VALUES 
@@ -352,7 +480,58 @@ SET estado = 'Rio Grande do Sul' WHERE id_aluno = 19 AND estado = 'RS';
 UPDATE aluno
 SET estado = 'Santa Catarina' WHERE id_aluno = 20 AND estado = 'SC';
 
+UPDATE professor
+SET estado = 'Paraná'
+WHERE id_professor = 1;
 
-select * from aluno;
+UPDATE professor
+SET estado = 'Ceará'
+WHERE id_professor = 2;
+
+UPDATE professor
+SET estado = 'São Paulo'
+WHERE id_professor = 3;
+
+UPDATE professor
+SET estado = 'Minas Gerais'
+WHERE id_professor = 4;
+
+UPDATE professor
+SET estado = 'Rio Grande do Sul'
+WHERE id_professor = 5;
+
+UPDATE professor
+SET estado = 'Pernambuco'
+WHERE id_professor = 6;
+
+UPDATE professor
+SET estado = 'Bahia'
+WHERE id_professor = 7;
+
+UPDATE professor
+SET estado = 'Alagoas'
+WHERE id_professor = 8;
+
+UPDATE professor
+SET estado = 'Maranhão'
+WHERE id_professor = 9;
+
+UPDATE professor
+SET estado = 'Rio de Janeiro'
+WHERE id_professor = 10;
+
+
+select * from matricula;
 select * from mensalidade;
+select * from aluno;
+select * from professor;
+select * from curso;
+select * from turma;
+select * from administrador_pagina;
+select * from propostas;
+SELECT * FROM sobre_nos ORDER BY id_sobre_nos;
+$2y$10$hFn36gtnrB3sBXQN6d5RceUTcZMjxs2poK1k8T1cEPAttsdP/W7LK
+$2y$10$hFn36gtnrB3sBXQN6d5RceUTcZMjxs2poK1k8T1cEPAttsdP/W7LK
+$2y$10$fKqqjzn4QlUqjcfAgY2CTOFBRhf61ZN8pOnnxEjR364bMa9V.QmXS
+
 

@@ -14,7 +14,7 @@ if (isset($_POST['data_matricula'])) {
                                 (data_matricula, status_matricula, id_aluno, id_turma)
                                 VALUES (?, ?, ?, ?)"
                                 ,[
-                                    Funcoes::converterDate($_POST['data_matricula']),
+                                    $_POST['data_matricula'],
                                     $_POST['status_matricula'],
                                     $_POST['id_aluno'],
                                     $_POST['id_turma'],
@@ -24,7 +24,10 @@ if (isset($_POST['data_matricula'])) {
             $_SESSION['msgSuccess'] = "Matricula registrada com sucesso.";
         }
 
-    } catch (Exception $e) {
-        $_SESSION['msgError'] = "ERROR: " . $e->getMessage();
+    } catch (Exception $ex) {
+        $_SESSION['msgError'] = "ERROR: " . $ex->getMessage();
     }
 } 
+
+return header("Location: dashboard.php?pagina=listaMatricula");
+exit;

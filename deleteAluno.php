@@ -12,14 +12,17 @@ if (isset($_POST['nome_completo'])) {
         $result = $db->dbDelete("DELETE FROM aluno
                                 WHERE id_aluno = ?"
                                 ,[
-                                    $POST['id_aluno']
+                                    $_POST['id_aluno']
                                 ]);
         
         if ($result > 0) {  
             $_SESSION['msgSuccess'] = "Aluno excluído.";
         }
 
-    } catch (Exception $e) {
-        $_SESSION['msgError'] = "ERROR: " . $e->getMessage();
+    } catch (Exception $ex) {
+        $_SESSION['msgError'] = "ERROR: " . $ex->getMessage();
     }
 } 
+
+return header("Location: dashboard.php?pagina=listaAluno");
+exit;

@@ -16,8 +16,8 @@ $data = $db->dbSelect("SELECT * FROM aluno ORDER BY nome_completo");
         <div class="col-10">
             <h3 class="line-under">Lista de Alunos</h3>
         </div>
-        <div class="col-2">
-            <a href="#" class="btn-lista" title="nova">Novo</a>
+        <div class="col-2 text-end">
+            <a href="dashboard.php?pagina=formAluno&acao=insert" class="btn-new" title="nova">Novo</a>
         </div>
     </div>
     
@@ -31,11 +31,13 @@ $data = $db->dbSelect("SELECT * FROM aluno ORDER BY nome_completo");
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th scope="col" width="50">Id</th>
+                            <th scope="col" width="50">Id</th> 
                             <th scope="col">Nome</th>
+                            <th scope="col">CPF</th>
                             <th scope="col">Telefone</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Ação</th>
+                            <th scope="col">Status</th>
+                            <th scope="col" width="300">Ação</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -44,6 +46,7 @@ $data = $db->dbSelect("SELECT * FROM aluno ORDER BY nome_completo");
                             <tr>
                                 <td><?= $row['id_aluno'] ?></td>
                                 <td><?= $row['nome_completo'] ?></td>
+                                <td><?= $row['cpf'] ?></td>
                                 <td><?php
                                     $telefone = $row['telefone'];
                                     $ddd = substr($telefone, 0, 2); 
@@ -53,8 +56,11 @@ $data = $db->dbSelect("SELECT * FROM aluno ORDER BY nome_completo");
                                     ?>
                                 </td>
                                 <td><?= $row['email'] ?></td>
+                                <td><?= Funcoes::getStatusRegistro($row['statusRegistro']) ?></td>
                                 <td>
-                                    <a href="dashboard.php?pagina=formAluno&acao=view&id_aluno=<?= $row['id_aluno'] ?>" class="btn-lista" title="Visualização">Visualizar</a>
+                                    <a href="dashboard.php?pagina=formAluno&acao=update&id_aluno=<?= $row['id_aluno'] ?>" class="btn-update" title="Alteração">Alterar</a>
+                                    <a href="dashboard.php?pagina=formAluno&acao=delete&id_aluno=<?= $row['id_aluno'] ?>" class="btn-delete" title="Exclusão">Excluir</a>
+                                    <a href="dashboard.php?pagina=formAluno&acao=view&id_aluno=<?= $row['id_aluno'] ?>" class="btn-view" title="Visualização">Visualizar</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

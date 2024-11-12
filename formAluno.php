@@ -18,14 +18,14 @@ if ($_GET['acao'] != 'insert') {
 
 ?>
 
-<div class="container mt-5">
+<div class="container mt-5 form-style">
 
     <div class="row">
         <div class="col-10">
-            <h3>Alunos<?= $func->subTitulo($_GET['acao']) ?></h3>
+            <h3 class="line-under">Alunos<?= $func->subTitulo($_GET['acao']) ?></h3>
         </div>
     </div>
-
+    
     <form class="g-3" action="<?= $_GET['acao'] ?>Aluno.php" method="POST">
 
         <input type="hidden" name="id_aluno" id="id_aluno" value="<?= funcoes::setValue($dados, "id_aluno") ?>">
@@ -39,7 +39,7 @@ if ($_GET['acao'] != 'insert') {
 
             <div class="col-4 mt-3">
                 <label for="data_nascimento" class="form-label">Data de Nascimento</label>
-                <input type="text" class="form-control" id="data_nascimento" name="data_nascimento" required value="<?= funcoes::setValue($dados, 'data_nascimento') ?>">
+                <input type="date" class="form-control" id="data_nascimento" name="data_nascimento" placeholder="Data de Nascimento" value="<?= funcoes::setValue($dados, 'data_nascimento') ?>">
             </div>
 
             <div class="col-4 mt-3">
@@ -96,14 +96,23 @@ if ($_GET['acao'] != 'insert') {
                 <input type="text" class="form-control" id="cep" name="cep" required value="<?= funcoes::setValue($dados, 'cep') ?>">
             </div>
             
-            <div class="col-9 mt-3">
+            <div class="col-8 mt-3">
                 <label for="logradouro" class="form-label">Logradouro</label>
                 <input type="text" class="form-control" id="logradouro" name="logradouro" required value="<?= funcoes::setValue($dados, 'logradouro') ?>">
             </div>
 
-            <div class="col-3 mt-3">
+            <div class="col-1 mt-3">
                 <label for="numero" class="form-label">Número</label>
                 <input type="text" class="form-control" id="numero" name="numero" required value="<?= funcoes::setValue($dados, 'numero') ?>">
+            </div>
+
+            <div class="col-3 mt-3">
+                <label for="statusRegistro" class="form-label">Status</label>
+                <select class="form-control" id="statusRegistro" name="statusRegistro" required>
+                        <option value=""  <?= Funcoes::setValue($dados, 'statusRegistro') == ""  ? 'selected' : '' ?>>...</option>
+                        <option value="1" <?= Funcoes::setValue($dados, 'statusRegistro') == "1" ? 'selected' : '' ?>>Ativo</option>
+                        <option value="2" <?= Funcoes::setValue($dados, 'statusRegistro') == "2" ? 'selected' : '' ?>>Inativo</option>
+                </select>
             </div>
 
             <div class="col-12 mt-3">
@@ -126,12 +135,12 @@ if ($_GET['acao'] != 'insert') {
         <div class="row mt-3">
             <div class="col-12 text-end">
                 <a href="dashboard.php?pagina=listaAluno" 
-                    class="btn-lista">
+                    class="btn-back m-4">
                     Voltar
                 </a>
 
                 <?php if ($_GET['acao'] != 'view'): ?>
-                    <button type="submit" class="btn-lista">Confirmar</button>
+                    <button type="submit" class="btn-new">Confirmar</button>
                 <?php endif; ?>
             </div>
         </div>

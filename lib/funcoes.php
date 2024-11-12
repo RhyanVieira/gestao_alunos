@@ -25,21 +25,71 @@ class Funcoes
         return $ret;
     }
 
-    public static function isAdministrador(): bool
-    {
-        return isset($_SESSION['nivel']) && $_SESSION['nivel'] == 1;
+    public static function getUserType($email) {
+        require_once "lib/Database.php";
+    
+        $db = new Database();
+    
+        // Verifica se o usuário é um administrador
+        $usuario = $db->dbSelect(
+            "SELECT nivel FROM administrador WHERE email = ?",
+            'first',
+            [$email]
+        );
+    
+        if ($usuario && $usuario['nivel'] == 1) {
+            return 'administrador';
+        }
+    
+        // Verifica se o usuário é um administrador de sistema (administrador_pagina)
+        $usuarioPagina = $db->dbSelect(
+            "SELECT email FROM administrador_pagina WHERE email = ?",
+            'first',
+            [$email]
+        );
+    
+        if ($usuarioPagina) {
+            return 'administrador_pagina';
+        }
+    
+        // Se não for nenhum dos tipos, retorna null ou outro valor indicando que não tem acesso
+        return null;
     }
     
-    public static function isCoordenador(): bool
-    {
-        return isset($_SESSION['nivel']) && $_SESSION['nivel'] == 2;
-    }
+    public static function verificarAcessoPagina($email) {
+        require_once "lib/Database.php";
     
-    public static function isSecretario(): bool
-    {
-        return isset($_SESSION['nivel']) && $_SESSION['nivel'] == 3;
-    }
+        // Cria a conexão com o banco
+        $db = new Database();
     
+        // Consulta para verificar o nível do usuário
+        $usuario = $db->dbSelect(
+            "SELECT nivel FROM administrador WHERE email = ?",
+            'first',
+            [$email]
+        );
+    
+        // Se o nível do usuário for 1 (administrador), ele tem acesso
+        if ($usuario && $usuario['nivel'] == 1) {
+            return true;
+        }
+    
+        // Se o nível não for 1, verifica se o usuário está na tabela administrador_sistema
+        $usuarioSistema = $db->dbSelect(
+            "SELECT email FROM administrador_pagina WHERE email = ?",
+            'first',
+            [$email]
+        );
+    
+        // Se o usuário for encontrado na tabela administrador_sistema, ele também tem acesso
+        if ($usuarioSistema) {
+            return true;
+        }
+    
+        // Caso contrário, não tem acesso
+        return false;
+    }
+
     /**
      * strDecimais
      *
@@ -63,27 +113,6 @@ class Funcoes
         return number_format($valor, $decimais, ",", ".");
     }
     
-    /**
-     * converterDate
-     * 
-     * @param string $dateBr
-     * @return string
-     */
-    public static function converterDate(string $dateBr): string
-    {
-        // Divide a data em partes usando o separador "/"
-        $partes = explode('/', $dateBr);
-        
-        // Verifica se a data possui três partes (dia, mês e ano)
-        if (count($partes) == 3) {
-            // Retorna a data no formato americano (AAAA-MM-DD)
-            return $partes[2] . '-' . $partes[1] . '-' . $partes[0];
-        }
-
-        // Retorna uma mensagem de erro se a data não estiver no formato correto
-        return "Formato de data inválido. Use DD/MM/AAAA.";
-    }
-
     public static function mensagem(): string
     {
         $ret = "";
@@ -176,8 +205,63 @@ class Funcoes
             return "...";
         }
     }
+
+    /**
+     * getStatusRegistro
+     * 
+     * @param int $status
+     * @param string
+     */
+    public static function getStatusRegistro($status) : string
+    {
+        if ($status == 1) {
+            return "Ativo";
+        } elseif ($status == 2) {
+            return "Inativo";
+        } else {
+            return "...";
+        }
+    }
+
+    /**
+     * getNivel
+     * 
+     * @param int $status
+     * @param string
+     */
+    public static function getNivel($status) : string
+    {
+        if ($status == 1) {
+            return "Diretor";
+        } elseif ($status == 2) {
+            return "Coordenador";
+        } elseif ($status == 3) {
+            return "Secretário";    
+        } else {
+            return "...";
+        }
+    }
+
+    /**
+     * gerarNomeAleatorio
+     *
+     * @param string $nomeArquivo 
+     * @return string
+     */
+    public static function gerarNomeAleatorio($nomeArquivo) 
+    {
+        $retNome    = "";
+        $arquivo    = explode(".", $nomeArquivo);
+        $arqExt     = $arquivo[count($arquivo) -1 ];
+        $arqNome    = str_replace('.' . $arqExt, "",  $nomeArquivo);
+        $aleatorio  = rand(0, 99999);
+        
+        return $arqNome . '-' . $aleatorio . '.' .  $arqExt;
+    }
+    
 }
 
+    
 
 
     

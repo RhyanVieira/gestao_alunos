@@ -22,7 +22,10 @@ if (isset($_POST['disciplina'])) {
             $_SESSION['msgSuccess'] = "Disciplina registrada.";
         }
 
-    } catch (Exception $e) {
-        $_SESSION['msgError'] = "ERROR: " . $e->getMessage();
+    } catch (Exception $ex) {
+        $_SESSION['msgError'] = "ERROR: " . $ex->getMessage();
     }
 } 
+
+return header("Location: dashboard.php?pagina=listaDisciplina");
+exit;

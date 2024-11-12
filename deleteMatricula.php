@@ -19,7 +19,10 @@ if (isset($_POST['data_matricula'])) {
             $_SESSION['msgSuccess'] = "Matricula excluída com sucesso.";
         }
 
-    } catch (Exception $e) {
-        $_SESSION['msgError'] = "ERROR: " . $e->getMessage();
+    } catch (Exception $ex) {
+        $_SESSION['msgError'] = "ERROR: " . $ex->getMessage();
     }
 } 
+
+return header("Location: dashboard.php?pagina=listaMatricula");
+exit;

@@ -19,7 +19,10 @@ if (isset($_POST['valor'])) {
             $_SESSION['msgSuccess'] = "Mensalidade excluída.";
         }
 
-    } catch (Exception $e) {
-        $_SESSION['msgError'] = "ERROR: " . $e->getMessage();
+    } catch (Exception $ex) {
+        $_SESSION['msgError'] = "ERROR: " . $ex->getMessage();
     }
 } 
+
+return header("Location: dashboard.php?pagina=listaMensalidade");
+exit;

@@ -11,11 +11,11 @@ if (isset($_POST['nome_completo'])) {
 
     try {
         $result = $db->dbInsert("INSERT INTO aluno
-                                (nome_completo, data_nascimento, cpf, cidade, estado, cep, logradouro, numero, telefone, email, senha)
-                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+                                (nome_completo, data_nascimento, cpf, cidade, estado, cep, logradouro, numero, telefone, email, statusRegistro, senha)
+                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
                                 ,[
                                     $_POST['nome_completo'],
-                                    Funcoes::converterDate($_POST['data_nascimento']),
+                                    $_POST['data_nascimento'],
                                     $_POST['cpf'],
                                     $_POST['cidade'],
                                     $_POST['estado'],
@@ -24,6 +24,7 @@ if (isset($_POST['nome_completo'])) {
                                     $_POST['numero'],
                                     $_POST['telefone'],
                                     $_POST['email'],
+                                    $_POST['statusRegistro'],
                                     password_hash(trim($_POST['senha']), PASSWORD_DEFAULT)
                                 ]);
         
@@ -31,7 +32,10 @@ if (isset($_POST['nome_completo'])) {
             $_SESSION['msgSuccess'] = "Aluno registrado.";
         }
 
-    } catch (Exception $e) {
-        $_SESSION['msgError'] = "ERROR: " . $e->getMessage();
+    } catch (Exception $ex) {
+        $_SESSION['msgError'] = "ERROR: " . $ex->getMessage();
     }
 } 
+
+return header("Location: dashboard.php?pagina=listaAluno");
+exit;

@@ -19,7 +19,10 @@ if (isset($_POST['curso'])) {
             $_SESSION['msgSuccess'] = "Curso excluído.";
         }
 
-    } catch (Exception $e) {
-        $_SESSION['msgError'] = "ERROR: " . $e->getMessage();
+    } catch (Exception $ex) {
+        $_SESSION['msgError'] = "ERROR: " . $ex->getMessage();
     }
 } 
+
+return header("Location: dashboard.php?pagina=listaCurso");
+exit;

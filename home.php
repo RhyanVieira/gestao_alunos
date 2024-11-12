@@ -1,3 +1,16 @@
+<?php
+
+require_once "lib/Database.php";
+require_once "lib/funcoes.php";
+
+$db = new Database();
+
+$servicos = $db->dbSelect("SELECT * FROM servicos WHERE status_registro = 1 ORDER BY posicao LIMIT 3");
+$propostas = $db->dbSelect("SELECT * FROM propostas WHERE status_registro = 1 ORDER BY posicao LIMIT 3");
+
+?>
+
+
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
@@ -45,7 +58,6 @@
     </button>
 </div>
 
-<!-- about section starts -->
 <section id="about" class="about section-padding">
     <div class="container">
         <div class="row">
@@ -67,8 +79,7 @@
     </div>
 </section>
 <hr class="custom-line">
-<!-- about section Ends -->
-<!-- services section Starts -->
+
 <section class="services section-padding" id="services">
     <div class="container">
         <div class="row">
@@ -80,53 +91,25 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12 col-md-12 col-lg-4">
-                <a href="index.php?pagina=servicos" class="card-link">
-                    <div class="card text-white text-center pb-2">
-                        <div class="card-body">
-                            <i class="bi bi-laptop"></i>
-                            <h3 class="card-title">Captação Eficiente de Alunos</h3>
-                            <p class="lead">Nossa plataforma permite uma captação simplificada e eficiente de novos alunos. 
-                                Com ferramentas de automação, segmentação e personalização, atraímos o público certo e otimizamos 
-                                os esforços para alcançar quem realmente se interessa pela sua instituição, reduzindo custos e melhorando os resultados de cada campanha.</p>
+            <?php foreach ($servicos as $aServicos): ?>
+                <div class="col-12 col-md-12 col-lg-4">
+                    <a href="index.php?pagina=servicos" class="card-link">
+                        <div class="card text-white text-center pb-2">
+                            <div class="card-body">
+                                <i class="<?= $aServicos['icone_bootstrap']?>"></i>
+                                <h3 class="card-title"><?= $aServicos['subtitulo']?></h3>
+                                <p class="lead"><?= $aServicos['texto_card']?></p>
+                            </div>
                         </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-12 col-md-12 col-lg-4">
-                <a href="index.php?pagina=servicos" class="card-link">
-                    <div class="card text-white text-center pb-2">
-                        <div class="card-body">
-                            <i class="bi bi-intersect"></i>
-                            <h3 class="card-title">Gestão Integrada e Inteligente</h3>
-                            <p class="lead">Organize, gerencie e acompanhe o histórico dos alunos em uma plataforma centralizada. 
-                                Com funcionalidades para controle de matrículas, acompanhamento de desempenho e geração de relatórios 
-                                detalhados, ajudamos a garantir uma experiência de gestão eficiente e completa, trazendo praticidade e agilidade para o dia a dia.</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-12 col-md-12 col-lg-4">
-                <a href="index.php?pagina=servicos" class="card-link">
-                    <div class="card text-white text-center pb-2">
-                        <div class="card-body">
-                            <i class="bi bi-person-check"></i>
-                            <h3 class="card-title">Comunicação e Fidelização</h3>
-                            <p class="lead">Aumente a satisfação e retenção dos alunos com comunicação personalizada e eficiente. 
-                                Nossa plataforma possibilita o envio de notificações, atualizações e mensagens em tempo real, 
-                                mantendo alunos e responsáveis informados e engajados. Fidelize alunos e garanta uma jornada satisfatória do início ao fim.</p>
-                        </div>
-                    </div>    
-                </a>
-                </div>
+                    </a>
+                </div>                
+            <?php endforeach; ?>
             </div>
         </div>
     </div>
 </section>
 <hr class="custom-line">
-<!-- services section Ends -->
 
-<!-- portfolio strats -->
 <section id="portfolio" class="portfolio section-padding">
     <div class="container">
         <div class="row">
@@ -139,43 +122,19 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12 col-md-12 col-lg-4 mb-2">
-                <div class="card text-light text-center bg-white pb-2 h-100">
-                    <div class="card-body text-dark d-flex flex-column">
-                        <div class="img-area mb-4">
-                            <img src="" class="img-fluid" alt="">
+            <?php foreach ($propostas as $aPropostas): ?>
+                <div class="col-12 col-md-12 col-lg-4 mb-2">
+                    <div class="card text-light text-center bg-white pb-2 h-100">
+                        <div class="card-body text-dark d-flex flex-column">
+                            <div class="img-area mb-4">
+                                <img src="uploads/propostas/<?= $aPropostas['imagem'] ?>" class="img-fluid" alt="">
+                            </div>
+                            <h3 class="card-title"><?= $aPropostas['subtitulo']?></h3>
+                            <p class="lead"><?= $aPropostas['texto_card']?></p>
                         </div>
-                        <h3 class="card-title">Painel Administrativo Completo</h3>
-                        <p class="lead">Controle total de turmas, professores e alunos, tudo em um só lugar. 
-                            O painel permite uma organização prática do calendário acadêmico, com controle de frequência e gestão de notas, 
-                            garantindo que a administração seja fluida e eficiente.</p>
                     </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-12 col-lg-4 mb-2">
-                <div class="card text-light text-center bg-white pb-2 h-100">
-                    <div class="card-body text-dark d-flex flex-column">
-                        <div class="img-area mb-4">
-                            <img src="" class="img-fluid" alt="">
-                        </div>
-                        <h3 class="card-title">Monitoramento do Desempenho Escolar</h3>
-                        <p class="lead">Facilite o acompanhamento do desempenho dos alunos com lançamentos de notas e feedbacks personalizados. 
-                            Relatórios de progresso podem ser acessados por pais e responsáveis, e gráficos detalhados permitem comparações ao longo do ano letivo.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-12 col-lg-4 mb-2">
-                <div class="card text-light text-center bg-white pb-2 h-100">
-                    <div class="card-body text-dark d-flex flex-column">
-                        <div class="img-area mb-4">
-                            <img src="" class="img-fluid" alt="">
-                        </div>
-                        <h3 class="card-title">Gestão Financeira Eficiente</h3>
-                        <p class="lead">Simplifique o controle financeiro da instituição. Gerencie mensalidades e boletos, acompanhe o histórico de pagamentos e inadimplência, 
-                            e gere relatórios detalhados para uma visão clara da saúde financeira da instituição.</p>
-                    </div>
-                </div>
-            </div>
+                </div>             
+            <?php endforeach; ?>
             <div class="col-12">
                 <a href="index.php?pagina=propostas" class="page-button button-propostas" type="button">Ler Mais</a>
             </div>
@@ -297,3 +256,15 @@
             </div>
         </div>
 </section>
+
+<script src="assets/ckeditor5/ckeditor5-build-classic/ckeditor.js"></script>
+
+<script type="text/javascript">
+
+    ClassicEditor
+        .create(document.querySelector('#mensagem'))
+        .catch( error => {
+            console.error(error);
+        });
+
+</script>

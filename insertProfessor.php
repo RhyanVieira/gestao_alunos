@@ -31,7 +31,10 @@ if (isset($_POST['nome_completo'])) {
             $_SESSION['msgSuccess'] = "Professor registrado.";
         }
 
-    } catch (Exception $e) {
-        $_SESSION['msgError'] = "ERROR: " . $e->getMessage();
+    } catch (Exception $ex) {
+        $_SESSION['msgError'] = "ERROR: " . $ex->getMessage();
     }
 } 
+
+return header("Location: dashboard.php?pagina=listaProfessor");
+exit;

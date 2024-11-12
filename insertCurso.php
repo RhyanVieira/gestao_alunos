@@ -11,20 +11,23 @@ if (isset($_POST['curso'])) {
 
     try {
         $result = $db->dbInsert("INSERT INTO curso
-                                (curso, descricao, duracao_curso, valor_curso)
-                                VALUES (?, ?, ?, ?)"
+                                (curso, descricao, duracao_curso, valor_curso, status_registro)
+                                VALUES (?, ?, ?, ?, ?)"
                                 ,[
                                     $_POST['curso'],
                                     $_POST['descricao'],
                                     $_POST['duracao_curso'],
                                     Funcoes::strDecimais($_POST['valor_curso']),
+                                    $_POST['status_registro']
                                 ]);
         
         if ($result > 0) {  
             $_SESSION['msgSuccess'] = "Curso registrado.";
         }
 
-    } catch (Exception $e) {
-        $_SESSION['msgError'] = "ERROR: " . $e->getMessage();
+    } catch (Exception $ex) {
+        $_SESSION['msgError'] = "ERROR: " . $ex->getMessage();
     }
 } 
+return header("Location: dashboard.php?pagina=listaCurso");
+exit;

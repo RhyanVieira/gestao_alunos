@@ -8,32 +8,29 @@ $func = new funcoes();
 
 $aCurso = $db->dbSelect("SELECT * FROM curso ORDER BY curso");
 
-$aAdministrador = $db->dbSelect("SELECT * FROM administrador WHERE nivel = '2' ORDER BY nome_aluno");
+$aAdministrador = $db->dbSelect("SELECT * FROM administrador WHERE nivel = '2' ORDER BY nome_completo");
 
 $dados = [];
 
 if ($_GET['acao'] != 'insert') {
     $dados = $db->dbSelect(
-        "SELECT * FROM turma WHERE id = ?",
+        "SELECT * FROM turma WHERE id_turma = ?",
         'first',
-        [$_GET['id']]
+        [$_GET['id_turma']]
     );
 }
 
 ?>
 
-<div class="container mt-5">
+<div class="container mt-5 form-style">
 
     <div class="row">
         <div class="col-10">
-            <h3>Turmas<?= $func->subTitulo($_GET['acao']) ?></h3>
-        </div>
-        <div class="col-2 text-end">
-            <a href="index.php?pagina=listaTurmas" class="btn btn-outline-secondary btn-sm">Voltar</a>
+            <h3 class="line-under">Turmas<?= $func->subTitulo($_GET['acao']) ?></h3>
         </div>
     </div>
 
-    <form class="g-3" action="<?= $_GET['acao'] ?>turma.php" method="POST">
+    <form class="g-3" action="<?= $_GET['acao'] ?>Turma.php" method="POST">
 
         <input type="hidden" name="id_turma" id="id_turma" value="<?= funcoes::setValue($dados, "id_turma") ?>">
 
@@ -45,8 +42,8 @@ if ($_GET['acao'] != 'insert') {
             </div>
 
             <div class="col-4">
-                <label for="ano_semestre" class="form-label">Ano/Semestre</label>
-                <input type="text" class="form-control" id="ano_semestre" name="ano_semestre" required value="<? funcoes::setValue($dados, 'ano_semestre') ?>">
+                <label for="ano_semestre" class="form-label">Ano - Semestre</label>
+                <input type="text" class="form-control" id="ano_semestre" name="ano_semestre" required value="<?= funcoes::setValue($dados, 'ano_semestre') ?>">
             </div>
 
             <div class="col-6 mt-3">
@@ -76,11 +73,11 @@ if ($_GET['acao'] != 'insert') {
         </div>
 
         <div class="row mt-3">
-            <div class="col-12">
-                <a href="index.php?pagina=listaTurma" class="btn btn-outline-secondary btn-sm">Voltar</a>
+            <div class="col-12 text-end">
+                <a href="dashboard.php?pagina=listaTurma" class="btn-back m-4">Voltar</a>
 
                 <?php if ($_GET['acao'] != 'view'): ?>
-                    <button type="submit" class="btn btn-primary btn-sm">Confirmar</button>
+                    <button type="submit" class="btn-new">Confirmar</button>
                 <?php endif; ?>
             </div>
         </div>

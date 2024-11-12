@@ -6,30 +6,41 @@ require_once "lib/funcoes.php";
 $db = new Database();
 $func = new funcoes();
 
+$userType = funcoes::getUserType($_SESSION['userEmail']);
+
+if ($userType == 'administrador') {
+    $urlPrefix = "dashboard.php";
+    $classContainer = "container mt-5 form-style";
+
+} elseif ($userType == 'administrador_pagina') {
+    $urlPrefix = "index.php";
+    $classContainer = "container form-style lista-index";
+} 
+
 $dados = [];
 
 if ($_GET['acao'] != 'insert') {
     $dados = $db->dbSelect(
-        "SELECT * FROM administrador WHERE id = ?",
+        "SELECT * FROM administrador WHERE id_administrador = ?",
         'first',
-        [$_GET['id']]
+        [$_GET['id_administrador']]
     );
 }
 
 ?>
 
-<div class="container mt-5">
+<div class="<?= $classContainer ?>">
 
     <div class="row">
         <div class="col-10">
-            <h3>Administradores<?= $func->subTitulo($_GET['acao']) ?></h3>
+            <h3 class="line-under">Administradores<?= $func->subTitulo($_GET['acao']) ?></h3>
         </div>
         <div class="col-2 text-end">
-            <a href="index.php?pagina=listaAdministrador" class="btn btn-outline-secondary btn-sm">Voltar</a>
+            <a href="<?= $urlPrefix ?>?pagina=listaAdministrador" class="btn-back">Voltar</a>
         </div>
     </div>
 
-    <form class="g-3" action="<?= $_GET['acao'] ?>aministrador.php" method="POST">
+    <form class="g-3" action="<?= $_GET['acao'] ?>Administrador.php" method="POST">
 
         <input type="hidden" name="id_administrador" id="id_administrador" value="<?= funcoes::setValue($dados, "id_administrador") ?>">
 
@@ -40,24 +51,33 @@ if ($_GET['acao'] != 'insert') {
                 <input type="text" class="form-control" id="nome_completo" name="nome_completo" placeholder="Nome do administrador" required autofocus value="<?= Funcoes::setValue($dados, 'nome_completo') ?>">
             </div>
 
-            <div class="col-4 mt-3">
+            <div class="col-3 mt-3">
                 <label for="nivel" class="form-label">Nível</label>
                 <select class="form-control" id="nivel" name="nivel" required>
                         <option value=""  <?= Funcoes::setValue($dados, 'nivel') == ""  ? 'selected' : '' ?>>...</option>
-                        <option value="1" <?= Funcoes::setValue($dados, 'nivel') == "1" ? 'selected' : '' ?>>Administrador do Sistema</option>
+                        <option value="1" <?= Funcoes::setValue($dados, 'nivel') == "1" ? 'selected' : '' ?>>Diretor</option>
                         <option value="2" <?= Funcoes::setValue($dados, 'nivel') == "2" ? 'selected' : '' ?>>Coordenador Acadêmico</option>
                         <option value="3" <?= Funcoes::setValue($dados, 'nivel') == "3" ? 'selected' : '' ?>>Secretário</option>
                 </select>
             </div>
 
-            <div class="col-4 mt-3">
+            <div class="col-3 mt-3">
                 <label for="telefone" class="form-label">Telefone</label>
-                <input type="text" class="form-control" id="telefone" name="telefone" required value="<? funcoes::setValue($dados, 'telefone') ?>">
+                <input type="text" class="form-control" id="telefone" name="telefone" required value="<?= funcoes::setValue($dados, 'telefone') ?>">
             </div>
 
-            <div class="col-4 mt-3">
+            <div class="col-3 mt-3">
                 <label for="cpf" class="form-label">CPF</label>
-                <input type="text" class="form-control" id="cpf" name="cpf" required value="<? funcoes::setValue($dados, 'cpf') ?>">
+                <input type="text" class="form-control" id="cpf" name="cpf" required value="<?= funcoes::setValue($dados, 'cpf') ?>">
+            </div>
+
+            <div class="col-3 mt-3">
+                <label for="statusRegistro" class="form-label">Status</label>
+                <select class="form-control" id="statusRegistro" name="statusRegistro" required>
+                        <option value=""  <?= Funcoes::setValue($dados, 'statusRegistro') == ""  ? 'selected' : '' ?>>...</option>
+                        <option value="1" <?= Funcoes::setValue($dados, 'statusRegistro') == "1" ? 'selected' : '' ?>>Ativo</option>
+                        <option value="2" <?= Funcoes::setValue($dados, 'statusRegistro') == "2" ? 'selected' : '' ?>>Inativo</option>
+                </select>
             </div>
 
             <div class="col-12 mt-3">
@@ -79,10 +99,10 @@ if ($_GET['acao'] != 'insert') {
 
         <div class="row mt-3">
             <div class="col-12">
-                <a href="index.php?pagina=listaAdministrador" class="btn btn-outline-secondary btn-sm">Voltar</a>
+                <a href="<?= $urlPrefix ?>?pagina=listaAdministrador" class="btn-back m-4">Voltar</a>
 
                 <?php if ($_GET['acao'] != 'view'): ?>
-                    <button type="submit" class="btn btn-primary btn-sm">Confirmar</button>
+                    <button type="submit" class="btn-new">Confirmar</button>
                 <?php endif; ?>
             </div>
         </div>

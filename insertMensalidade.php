@@ -10,13 +10,16 @@ if (isset($_POST['valor'])) {
     $db = new Database();
 
     try {
+
+        $data_pagamento = !empty($_POST['data_pagamento']) ? $_POST['data_pagamento'] : NULL;
+
         $result = $db->dbInsert("INSERT INTO mensalidade
                                 (valor, data_vencimento, data_pagamento, status_pagamento, id_aluno, id_turma)
-                                VALUES (?, ?, ?, ?, ?, ?)"
-                                ,[
+                                VALUES (?, ?, ?, ?, ?, ?)",
+                                [
                                     Funcoes::strDecimais($_POST['valor']),
-                                    Funcoes::converterDate($_POST['data_vencimento']),
-                                    Funcoes::converterDate($_POST['data_pagamento']),
+                                    $_POST['data_vencimento'],
+                                    $data_pagamento,
                                     $_POST['status_pagamento'],
                                     $_POST['id_aluno'],
                                     $_POST['id_turma']
@@ -26,7 +29,10 @@ if (isset($_POST['valor'])) {
             $_SESSION['msgSuccess'] = "Mensalidade registrada.";
         }
 
-    } catch (Exception $e) {
-        $_SESSION['msgError'] = "ERROR: " . $e->getMessage();
+    } catch (Exception $ex) {
+        $_SESSION['msgError'] = "ERROR: " . $ex->getMessage();
     }
 } 
+
+return header("Location: dashboard.php?pagina=listaMensalidade");
+exit;

@@ -19,7 +19,10 @@ if (isset($_POST['nome_turma'])) {
             $_SESSION['msgSuccess'] = "Turma excluída.";
         }
 
-    } catch (Exception $e) {
-        $_SESSION['msgError'] = "ERROR: " . $e->getMessage();
+    } catch (Exception $ex) {
+        $_SESSION['msgError'] = "ERROR: " . $ex->getMessage();
     }
 } 
+
+return header("Location: dashboard.php?pagina=listaTurma");
+exit;

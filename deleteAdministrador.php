@@ -1,6 +1,16 @@
 <?php 
 
+require_once "lib/funcoes.php";
+
 session_start();
+
+$userType = funcoes::getUserType($_SESSION['userEmail']);
+
+if ($userType == 'administrador') {
+    $urlPrefix = "dashboard.php";
+} elseif ($userType == 'administrador_pagina') {
+    $urlPrefix = "index.php";
+} 
 
 if (isset($_POST['nome_completo'])) {
 
@@ -12,14 +22,17 @@ if (isset($_POST['nome_completo'])) {
         $result = $db->dbDelete("DELETE FROM administrador
                                 WHERE id_administrador = ?"
                                 , [
-                                    $POST['id_administrador']
+                                    $_POST['id_administrador']
                                 ]);
         
         if ($result > 0) {  
             $_SESSION['msgSuccess'] = "Registro excluído com sucesso.";
         }
 
-    } catch (Exception $e) {
-        $_SESSION['msgError'] = "ERROR: " . $e->getMessage();
+    } catch (Exception $ex) {
+        $_SESSION['msgError'] = "ERROR: " . $ex->getMessage();
     }
 } 
+
+return header("Location: $urlPrefix?pagina=listaAdministrador");
+exit;
