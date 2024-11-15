@@ -13,6 +13,7 @@ CREATE TABLE aluno (
     telefone VARCHAR(11) NOT NULL,
     email VARCHAR(100) NOT NULL,
     senha VARCHAR(250) NOT NULL,
+    statusRegistro INT NOT NULL DEFAULT '1' COMMENT '1=Ativo;2=Inativo',
     data_matricula TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id_aluno),
 	UNIQUE INDEX email_UNIQUE (email ASC) VISIBLE
@@ -31,6 +32,7 @@ CREATE TABLE professor(
     salario DECIMAL(10 , 2) NOT NULL,
     email VARCHAR(100) NOT NULL,
     senha VARCHAR(250) NOT NULL,
+    statusRegistro INT NOT NULL DEFAULT '1' COMMENT '1=Ativo;2=Inativo',
     PRIMARY KEY (id_professor),
     UNIQUE INDEX email_UNIQUE (email ASC) VISIBLE
 ) ENGINE = InnoDB;
@@ -41,17 +43,21 @@ CREATE TABLE curso (
     descricao LONGTEXT,
     duracao_curso INT NOT NULL,
     valor_curso DECIMAL(10 , 2) NOT NULL,
+    status_registro INT NOT NULL DEFAULT '1' COMMENT '1=Ativo;2=Inativo',
     PRIMARY KEY (id_curso)
 ) ENGINE = InnoDB;
+
+
 
 CREATE TABLE administrador (
     id_administrador INT AUTO_INCREMENT NOT NULL,
     nome_completo VARCHAR(75) NOT NULL,
     cpf VARCHAR(14) NOT NULL,
+	telefone VARCHAR(11) NOT NULL,
     email VARCHAR(100) NOT NULL,
     senha VARCHAR(250) NOT NULL,
-    telefone VARCHAR(11) NOT NULL,
-    nivel INT NOT NULL COMMENT '1=Administrador do Sistema;2=Coordenador Acadêmico,3=Secretário',
+    statusRegistro INT NOT NULL DEFAULT '1' COMMENT '1=Ativo;2=Inativo',
+    nivel INT NOT NULL DEFAULT '1' COMMENT '1=Administrador do Sistema;2=Coordenador Acadêmico,3=Secretário',
     PRIMARY KEY (id_administrador),
     UNIQUE INDEX email_UNIQUE (email ASC) VISIBLE
 ) ENGINE = InnoDB;
@@ -61,25 +67,28 @@ CREATE TABLE turma (
     ano_semestre VARCHAR(7) NOT NULL,
     nome_turma VARCHAR(45) NOT NULL,
     id_curso INT NOT NULL,
-    id_professor INT NOT NULL,
+    id_administrador INT NOT NULL,
     PRIMARY KEY (id_turma),
     CONSTRAINT fk1_curso_ FOREIGN KEY (id_curso)
         REFERENCES curso (id_curso),
-    CONSTRAINT fk1_professor FOREIGN KEY (id_professor)
-        REFERENCES professor (id_professor)
+    CONSTRAINT fk1_administrador FOREIGN KEY (id_administrador)
+        REFERENCES administrador (id_administrador)
 ) ENGINE = InnoDB;
 
 CREATE TABLE mensalidade (
-	id_mensalidade INT NOT NULL AUTO_INCREMENT,
-    valor DECIMAL(10 , 2) NOT NULL,
+    id_mensalidade INT NOT NULL AUTO_INCREMENT,
+    valor DECIMAL(10 , 2 ) NOT NULL,
     data_vencimento DATE NOT NULL,
     data_pagamento DATE,
     status_pagamento INT NOT NULL DEFAULT '2' COMMENT '1=Pago;2=Pendente',
     id_aluno INT NOT NULL,
+    id_turma INT NOT NULL,
     PRIMARY KEY (id_mensalidade),
     CONSTRAINT fk1_aluno FOREIGN KEY (id_aluno)
-        REFERENCES aluno (id_aluno)
-) ENGINE = InnoDB;
+        REFERENCES aluno (id_aluno),
+    CONSTRAINT fk1_turma FOREIGN KEY (id_turma)
+        REFERENCES turma (id_turma)
+)  ENGINE=INNODB;
 
 CREATE TABLE frequencia (
     id_frequencia INT NOT NULL AUTO_INCREMENT,
@@ -90,7 +99,7 @@ CREATE TABLE frequencia (
     PRIMARY KEY (id_frequencia),
     CONSTRAINT fk2_aluno FOREIGN KEY (id_aluno)
         REFERENCES aluno (id_aluno),
-    CONSTRAINT fk1_turma FOREIGN KEY (id_turma)
+    CONSTRAINT fk2_turma FOREIGN KEY (id_turma)
         REFERENCES turma (id_turma)
 ) ENGINE = InnoDB;
 
@@ -113,16 +122,18 @@ CREATE TABLE nota (
     PRIMARY KEY (id_nota),
     CONSTRAINT fk3_aluno FOREIGN KEY (id_aluno)
         REFERENCES aluno (id_aluno),
-    CONSTRAINT fk2_turma FOREIGN KEY (id_turma)
+    CONSTRAINT fk3_turma FOREIGN KEY (id_turma)
         REFERENCES turma (id_turma),
     CONSTRAINT fk1_disciplina FOREIGN KEY (id_disciplina)
         REFERENCES disciplina (id_disciplina)
 ) ENGINE = InnoDB;
 
 CREATE TABLE professor_disciplina (
+    id_professor_disciplina INT NOT NULL AUTO_INCREMENT,
     id_professor INT NOT NULL,
     id_disciplina INT NOT NULL,
-    CONSTRAINT fk2_professor FOREIGN KEY (id_professor)
+    PRIMARY KEY(id_professor_disciplina),
+    CONSTRAINT fk1_professor FOREIGN KEY (id_professor)
         REFERENCES professor (id_professor),
     CONSTRAINT fk2_disciplina FOREIGN KEY (id_disciplina)
         REFERENCES disciplina (id_disciplina)
@@ -131,17 +142,70 @@ CREATE TABLE professor_disciplina (
 CREATE TABLE matricula (
     id_matricula INT AUTO_INCREMENT NOT NULL,
     data_matricula TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    status_matricula INT NOT NULL DEFAULT '1' COMMENT '1=Ativo;2=Inativo;3=Trancado;4=Cancelado;5=Aguardando Pagamento;6=Pendente de Documentação;7=Concluído;8=Egresso',
+    status_matricula INT NOT NULL DEFAULT '1' COMMENT '1=Ativo;2=Inativo;3=Trancado;4=Cancelado;5=Aguardando Pagamento;6=Pendente de Documentação;7=Egresso',
     id_aluno INT NOT NULL,
     id_turma INT NOT NULL,
     PRIMARY KEY (id_matricula),
     CONSTRAINT fk4_aluno FOREIGN KEY (id_aluno)
         REFERENCES aluno (id_aluno),
-    CONSTRAINT fk3_turma FOREIGN KEY (id_turma)
+    CONSTRAINT fk4_turma FOREIGN KEY (id_turma)
         REFERENCES turma (id_turma)
 ) ENGINE = InnoDB;
 
+CREATE TABLE sobre_nos (
+    id_sobre_nos INT AUTO_INCREMENT NOT NULL,
+    icone_bootstrap VARCHAR(30) NOT NULL,
+    subtitulo VARCHAR(50) NOT NULL,
+    texto TEXT NOT NULL,
+    posicao INT NOT NULL DEFAULT '1',
+    status_registro INT NOT NULL DEFAULT '1' COMMENT '1=Ativo, 2=Inativo',
+    PRIMARY KEY (id_sobre_nos)
+) ENGINE = InnoDB;
 
-    
+CREATE TABLE servicos (
+    id_servicos INT AUTO_INCREMENT NOT NULL,
+    icone_bootstrap VARCHAR(30) NOT NULL,
+    subtitulo VARCHAR(50) NOT NULL,
+    texto TEXT NOT NULL,
+    texto_card TEXT NOT NULL,
+    posicao INT NOT NULL DEFAULT '1',
+    status_registro INT NOT NULL DEFAULT '1' COMMENT '1=Ativo, 2=Inativo',
+    PRIMARY KEY (id_servicos)
+) ENGINE = InnoDB;
 
-    
+CREATE TABLE propostas (
+    id_propostas INT AUTO_INCREMENT NOT NULL,
+    icone_bootstrap VARCHAR(30) NOT NULL,
+    subtitulo VARCHAR(50) NOT NULL,
+    texto TEXT NOT NULL,
+    texto_card TEXT NOT NULL,
+    posicao INT NOT NULL DEFAULT '1',
+    imagem VARCHAR(200) NOT NULL,
+    status_registro INT NOT NULL DEFAULT '1' COMMENT '1=Ativo, 2=Inativo',
+    PRIMARY KEY (id_propostas)
+) ENGINE = InnoDB;
+
+CREATE TABLE noticias (
+    id_noticias INT AUTO_INCREMENT NOT NULL,
+    titulo VARCHAR(50) NOT NULL,
+    texto TEXT NOT NULL,
+    texto_card TEXT NOT NULL,
+	data_postagem TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, 
+    imagem VARCHAR(200) NOT NULL,
+    status_registro INT NOT NULL DEFAULT '1' COMMENT '1=Ativo, 2=Inativo',
+    PRIMARY KEY (id_noticias)
+) ENGINE = InnoDB;
+
+CREATE TABLE administrador_pagina (
+	id_administrador_pagina INT AUTO_INCREMENT NOT NULL,
+    nome VARCHAR(75) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    senha VARCHAR(250) NOT NULL,
+    statusRegistro INT NOT NULL DEFAULT '1' COMMENT '1=Ativo;2=Inativo',
+    PRIMARY KEY (id_administrador_pagina),
+    UNIQUE INDEX email_UNIQUE (email ASC) VISIBLE
+) ENGINE = InnoDB;
+
+
+
+
