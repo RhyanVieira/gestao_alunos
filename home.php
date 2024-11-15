@@ -7,52 +7,37 @@ $db = new Database();
 
 $servicos = $db->dbSelect("SELECT * FROM servicos WHERE status_registro = 1 ORDER BY posicao LIMIT 3");
 $propostas = $db->dbSelect("SELECT * FROM propostas WHERE status_registro = 1 ORDER BY posicao LIMIT 3");
+$noticias = $db->dbSelect("SELECT * FROM noticias WHERE status_registro = 1 ORDER BY data_postagem DESC LIMIT 3");
+
 
 ?>
 
 
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-            aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-            aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-            aria-label="Slide 3"></button>
+        <?php foreach ($noticias as $index => $aNoticias): ?>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<?= $index ?>" class="<?= $index === 0 ? 'active' : '' ?>" aria-current="<?= $index === 0 ? 'true' : 'false' ?>" aria-label="Slide <?= $index + 1 ?>"></button>
+        <?php endforeach; ?>
     </div>
+    
     <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="sample_0.jpg" class="d-block w-100" alt="...">
-            <div class="carousel-caption">
-                <h5>Estratégias Inovadoras para Aumentar a Captação de Alunos</h5>
-                <p>Como ajudamos instituições a superar desafios.</p>
-                <p><a href="index.php?pagina=blog" class="page-button" type="button">Saiba Mais</a></p>
+        <?php foreach ($noticias as $index => $aNoticias): ?>
+            <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
+                <img src="uploads/noticias/<?= ($aNoticias['imagem']) ?>" class="d-block w-100" alt="<?= ($aNoticias['titulo']) ?>">
+                <div class="carousel-caption">
+                    <h5><?= ($aNoticias['titulo']) ?></h5>
+                    <p><a href="index.php?pagina=exibirNoticias&id_noticias=<?= $aNoticias['id_noticias'] ?>" class="page-button" type="button">Saiba Mais</a></p>
+                </div>
             </div>
-        </div>
-        <div class="carousel-item">
-            <img src="sample_2.jpg" class="d-block w-100" alt="...">
-            <div class="carousel-caption">
-                <h5>Experiência do Aluno</h5>
-                <p>Melhorando a experiência do aluno com ferramentas de suporte digital</p>
-                <p><a href="index.php?pagina=blog" class="page-button" type="button">Saiba Mais</a></p>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img src="sample_1.jpg" class="d-block w-100" alt="...">
-            <div class="carousel-caption">
-                <h5>Automação</h5>
-                <p>Como a automação pode transformar a gestão acadêmica na sua instituição</p>
-                <p><a href="index.php?pagina=blog" class="page-button" type="button">Saiba Mais</a></p>
-            </div>
-        </div>
+        <?php endforeach; ?>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="prev">
+    
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="next">
+    
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
     </button>
@@ -142,8 +127,7 @@ $propostas = $db->dbSelect("SELECT * FROM propostas WHERE status_registro = 1 OR
     </div>
 </section>
 <hr class="custom-line">
-<!-- portfolio ends -->
-<!-- team starts -->
+
 <section class="team section-padding" id="team">
     <div class="container">
         <div class="row">
@@ -219,8 +203,7 @@ $propostas = $db->dbSelect("SELECT * FROM propostas WHERE status_registro = 1 OR
     </div>
 </section>
 <hr class="custom-line">
-<!-- team ends -->
-<!-- Contact starts -->
+
 <section id="contact" class="contact section-padding">
     <div class="container">
         <div class="row">
@@ -231,9 +214,12 @@ $propostas = $db->dbSelect("SELECT * FROM propostas WHERE status_registro = 1 OR
                 </div>
             </div>
         </div>
+        
+        <?= funcoes::mensagem() ?>
+        
         <div class="row m-0">
             <div class="col-md-12 p-0 pt-4 pb-4">
-                <form action="#" class="p-4 m-auto form-contato">
+                <form action="contatoEmail.php" class="p-4 m-auto form-contato" method="post" id="contactForm" novalidate="novalidate">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="mb-3">
@@ -247,7 +233,12 @@ $propostas = $db->dbSelect("SELECT * FROM propostas WHERE status_registro = 1 OR
                         </div>
                         <div class="col-md-12">
                             <div class="mb-3">
-                                <textarea class="form-control " name="mensagem" id="mensagem" cols="30" rows="9" placeholder="Escreva sua mensagem"></textarea>
+                                <input class="form-control" name="assunto" id="assunto" placeholder="Assunto" type="text" required>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <textarea class="form-control " name="mensagem" id="mensagem" placeholder="Escreva sua mensagem" required></textarea>
                             </div>
                         </div>
                         <button type="submit" class="enviar-button">Enviar Agora</button>

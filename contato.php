@@ -1,7 +1,12 @@
 <div class="container text-center header-pages">
     <h1>Nossos Contatos</h1>
 </div>
+
+
 <section class="container mt-5 mb-5 contato">
+
+    <?= funcoes::mensagem() ?>
+
     <h4 class="line-under mb-4 ">Informações de contato</h4>
     <p class="mb-4">Estamos prontos para ajudar sua instituição a crescer! Entre em contato para saber mais sobre nossas soluções em captação e gestão de alunos.
         Nossa equipe especializada está à disposição para responder suas perguntas, oferecer suporte e desenvolver uma estratégia personalizada para o sucesso da sua instituição.
@@ -35,26 +40,43 @@
     <h4 class="line-under mt-4">Envie-nos uma mensagem</h4>
     <div class="row m-0">
         <div class="col-md-12 p-0 pt-4 pb-4">
-            <form action="#" class="p-4 m-auto form-contato">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="mb-3">
-                            <input class="form-control" name="nome-instituicao" id="nome-instituicao" placeholder="Nome da Instituição" type="text" required>
+            <form action="contatoEmail.php" class="p-4 m-auto form-contato" method="post" id="contactForm" novalidate="novalidate">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <input class="form-control" name="nome-instituicao" id="nome-instituicao" placeholder="Nome da Instituição" type="text" required>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="mb-3">
-                            <input class="form-control" name="email" id="email" placeholder="E-mail" type="email" required>
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <input class="form-control" name="email" id="email" placeholder="E-mail" type="email" required>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="mb-3">
-                            <textarea class="form-control " name="mensagem" id="mensagem" cols="30" rows="9" placeholder="Escreva sua mensagem"></textarea>
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <input class="form-control" name="assunto" id="assunto" placeholder="Assunto" type="text" required>
+                            </div>
                         </div>
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <textarea class="form-control " name="mensagem" id="mensagem" placeholder="Escreva sua mensagem" required></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="enviar-button">Enviar Agora</button>
                     </div>
-                    <button type="submit" class="enviar-button">Enviar Agora</button>
-                </div>
-            </form>
+                </form>
         </div>
     </div>
 </section>
+
+<script src="assets/ckeditor5/ckeditor5-build-classic/ckeditor.js"></script>
+
+<script type="text/javascript">
+
+    ClassicEditor
+        .create(document.querySelector('#mensagem'))
+        .catch( error => {
+            console.error(error);
+        });
+
+</script>
