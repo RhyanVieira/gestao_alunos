@@ -47,8 +47,6 @@ CREATE TABLE curso (
     PRIMARY KEY (id_curso)
 ) ENGINE = InnoDB;
 
-
-
 CREATE TABLE administrador (
     id_administrador INT AUTO_INCREMENT NOT NULL,
     nome_completo VARCHAR(75) NOT NULL,
@@ -60,19 +58,6 @@ CREATE TABLE administrador (
     nivel INT NOT NULL DEFAULT '1' COMMENT '1=Administrador do Sistema;2=Coordenador Acadêmico,3=Secretário',
     PRIMARY KEY (id_administrador),
     UNIQUE INDEX email_UNIQUE (email ASC) VISIBLE
-) ENGINE = InnoDB;
-
-CREATE TABLE turma (
-    id_turma INT NOT NULL AUTO_INCREMENT,
-    ano_semestre VARCHAR(7) NOT NULL,
-    nome_turma VARCHAR(45) NOT NULL,
-    id_curso INT NOT NULL,
-    id_administrador INT NOT NULL,
-    PRIMARY KEY (id_turma),
-    CONSTRAINT fk1_curso_ FOREIGN KEY (id_curso)
-        REFERENCES curso (id_curso),
-    CONSTRAINT fk1_administrador FOREIGN KEY (id_administrador)
-        REFERENCES administrador (id_administrador)
 ) ENGINE = InnoDB;
 
 CREATE TABLE mensalidade (
@@ -90,19 +75,6 @@ CREATE TABLE mensalidade (
         REFERENCES turma (id_turma)
 )  ENGINE=INNODB;
 
-CREATE TABLE frequencia (
-    id_frequencia INT NOT NULL AUTO_INCREMENT,
-    data_presenca DATE NOT NULL,
-    status_presenca INT NOT NULL COMMENT '1=Presente;2=Ausente',
-    id_aluno INT NOT NULL,
-    id_turma INT NOT NULL,
-    PRIMARY KEY (id_frequencia),
-    CONSTRAINT fk2_aluno FOREIGN KEY (id_aluno)
-        REFERENCES aluno (id_aluno),
-    CONSTRAINT fk2_turma FOREIGN KEY (id_turma)
-        REFERENCES turma (id_turma)
-) ENGINE = InnoDB;
-
 CREATE TABLE disciplina (
     id_disciplina INT AUTO_INCREMENT NOT NULL,
     disciplina VARCHAR(45) NOT NULL,
@@ -111,21 +83,6 @@ CREATE TABLE disciplina (
     PRIMARY KEY (id_disciplina),
     CONSTRAINT fk2_curso FOREIGN KEY (id_curso)
         REFERENCES curso (id_curso)
-) ENGINE = InnoDB;
-
-CREATE TABLE nota (
-    id_nota INT NOT NULL AUTO_INCREMENT,
-    nota DECIMAL(3 , 1) NOT NULL,
-    id_aluno INT NOT NULL,
-    id_turma INT NOT NULL,
-    id_disciplina INT NOT NULL,
-    PRIMARY KEY (id_nota),
-    CONSTRAINT fk3_aluno FOREIGN KEY (id_aluno)
-        REFERENCES aluno (id_aluno),
-    CONSTRAINT fk3_turma FOREIGN KEY (id_turma)
-        REFERENCES turma (id_turma),
-    CONSTRAINT fk1_disciplina FOREIGN KEY (id_disciplina)
-        REFERENCES disciplina (id_disciplina)
 ) ENGINE = InnoDB;
 
 CREATE TABLE professor_disciplina (
@@ -205,7 +162,6 @@ CREATE TABLE administrador_pagina (
     PRIMARY KEY (id_administrador_pagina),
     UNIQUE INDEX email_UNIQUE (email ASC) VISIBLE
 ) ENGINE = InnoDB;
-
 
 
 
