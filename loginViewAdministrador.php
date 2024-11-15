@@ -1,6 +1,6 @@
 <?php
-    
-    require_once "lib/funcoes.php";
+
+require_once "lib/funcoes.php";
 
 ?>
 
@@ -8,11 +8,10 @@
     <h1>Área Administrativa</h1>
 
     <?= Funcoes::mensagem() ?>
-    
+
 </div>
 <section class="login-view">
     <div class="login-container">
-
         <h2>Login - Administrador</h2>
         <form class="login-form" action="loginAdministrador.php" method="post" id="admForm" novalidate="novalidate">
             <div class="input-group">

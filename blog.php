@@ -5,8 +5,15 @@ require_once "lib/funcoes.php";
 
 $db = new Database();
 
-$ultimas = $db->dbSelect("SELECT * FROM noticias WHERE status_registro = 1 ORDER BY data_postagem DESC LIMIT 3");
-$proximasNoticias = $db->dbSelect("SELECT * FROM noticias WHERE status_registro = 1 ORDER BY data_postagem DESC LIMIT 3 OFFSET 3");
+$aUltimas = $db->dbSelect("SELECT * FROM noticias WHERE status_registro = 1 
+                            AND data_postagem < NOW() 
+                            ORDER BY data_postagem DESC LIMIT 3"
+);
+
+$aProximasNoticias = $db->dbSelect("SELECT * FROM noticias WHERE status_registro = 1 
+                                    AND data_postagem < NOW() 
+                                    ORDER BY data_postagem DESC LIMIT 3 OFFSET 3"
+);
 
 ?>
 
@@ -17,29 +24,31 @@ $proximasNoticias = $db->dbSelect("SELECT * FROM noticias WHERE status_registro 
 
 <section class="container mt-5 mb-5 blog">
     <h4 class="mb-4 line-under">Últimos Artigos</h4>
-    <?php foreach ($ultimas as $aUltimas): ?>
-        <div class="col-12 col-md-12 col-lg-4">
-            <a href="index.php?pagina=exibirNoticia&id_noticias=<?= $aUltimas['id_noticias'] ?>" class="card-link">
-                <div class="card h-100">
-                    <img src="uploads/noticias/<?= $aUltimas['imagem'] ?>" class="card-img-top" alt="Notícia 2">
-                    <div class="card-body">
-                        <h5 class="card-title"><?= $aUltimas['titulo']?></h5>
-                        <p class="card-text"><?= $aUltimas['texto_card']?>></p>
+    <div class="row">
+        <?php foreach ($aUltimas as $ultimas): ?>
+            <div class="col-12 col-md-12 col-lg-4">
+                <a href="index.php?pagina=exibirNoticia&id_noticias=<?= $ultimas['id_noticias'] ?>" class="card-link">
+                    <div class="card h-100">
+                        <img src="uploads/noticias/<?= $ultimas['imagem'] ?>" class="card-img-top" alt="Notícia 2">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= $ultimas['titulo'] ?></h5>
+                            <p class="card-text"><?= $ultimas['texto_card'] ?></p>
+                        </div>
                     </div>
-                </div>
-            </a>
-        </div>
-    <?php endforeach; ?>
+                </a>
+            </div>
+        <?php endforeach; ?>
+    </div>
     <h4 class="mb-4 mt-5 line-under">Artigos Anteriores</h4>
     <div class="row ">
-        <?php foreach ($proximasNoticias as $aProximasNoticias): ?>
+        <?php foreach ($aProximasNoticias as $proximasNoticias): ?>
             <div class="col-12 col-md-12 col-lg-4">
-                <a href="index.php?pagina=exibirNoticias&id_noticias=<?= $aProximasNoticias['id_noticias'] ?>" class="card-link">
+                <a href="index.php?pagina=exibirNoticias&id_noticias=<?= $proximasNoticias['id_noticias'] ?>" class="card-link">
                     <div class="card h-100">
-                        <img src="uploads/noticias/<?= $aProximasNoticias['imagem'] ?>" class="card-img-top" alt="Notícia 2">
+                        <img src="uploads/noticias/<?= $proximasNoticias['imagem'] ?>" class="card-img-top" alt="Notícia 2">
                         <div class="card-body">
-                            <h5 class="card-title"><?= $aProximasNoticias['titulo']?></h5>
-                            <p class="card-text"><?= $aProximasNoticias['texto_card']?>></p>
+                            <h5 class="card-title"><?= $proximasNoticias['titulo'] ?></h5>
+                            <p class="card-text"><?= $proximasNoticias['texto_card'] ?></p>
                         </div>
                     </div>
                 </a>

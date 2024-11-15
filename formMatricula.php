@@ -29,12 +29,14 @@ if ($_GET['acao'] != 'insert') {
             <h3 class="line-under">Matrículas<?= $func->subTitulo($_GET['acao']) ?></h3>
         </div>
         <?php if (isset($dados) && !empty($dados)): ?>
-            <div class="col-4 text-end"><h6>Nº: <?= $dados['id_matricula'] ?></h6></div>
+            <div class="col-4 text-end">
+                <h6>Nº: <?= $dados['id_matricula'] ?></h6>
+            </div>
         <?php endif; ?>
     </div>
 
     <form class="g-3" action="<?= $_GET['acao'] ?>Matricula.php" method="POST">
-        
+
         <input type="hidden" name="id_matricula" id="id_matricula" value="<?= funcoes::setValue($dados, "id_matricula") ?>">
 
         <div class="row form-style">
@@ -47,7 +49,7 @@ if ($_GET['acao'] != 'insert') {
             <div class="col-6">
                 <label for="status_matricula" class="form-label">Status Matricula</label>
                 <select class="form-control" id="status_matricula" name="status_matricula" required>
-                    <option value=""  <?= Funcoes::setValue($dados, 'status_matricula') == ""  ? 'selected' : '' ?>>...</option>
+                    <option value="" <?= Funcoes::setValue($dados, 'status_matricula') == ""  ? 'selected' : '' ?>>...</option>
                     <option value="1" <?= Funcoes::setValue($dados, 'status_matricula') == "1" ? 'selected' : '' ?>>Ativo</option>
                     <option value="2" <?= Funcoes::setValue($dados, 'status_matricula') == "2" ? 'selected' : '' ?>>Inativo</option>
                     <option value="3" <?= Funcoes::setValue($dados, 'status_matricula') == "3" ? 'selected' : '' ?>>Trancado</option>
@@ -57,28 +59,28 @@ if ($_GET['acao'] != 'insert') {
                     <option value="7" <?= Funcoes::setValue($dados, 'status_matricula') == "7" ? 'selected' : '' ?>>Egresso</option>
                 </select>
             </div>
-            
+
             <div class="col-6 mt-3">
                 <label for="id_aluno" class="form-label">Aluno</label>
                 <select class="form-control" id="id_aluno" name="id_aluno" required>
-                    <option value=""  <?= Funcoes::setValue($dados, 'id_aluno') == ""  ? 'selected' : '' ?>>...</option>
+                    <option value="" <?= Funcoes::setValue($dados, 'id_aluno') == ""  ? 'selected' : '' ?>>...</option>
 
                     <?php foreach ($aAluno as $aluno): ?>
                         <option value="<?= $aluno['id_aluno'] ?>" <?= Funcoes::setValue($dados, 'id_aluno') == $aluno['id_aluno'] ? 'selected' : '' ?>><?= $aluno['cpf'] ?></option>
                     <?php endforeach; ?>
-                    
+
                 </select>
             </div>
 
             <div class="col-6 mt-3">
                 <label for="id_turma" class="form-label">Turma</label>
                 <select class="form-control" id="id_turma" name="id_turma" required>
-                    <option value=""  <?= Funcoes::setValue($dados, 'id_turma') == ""  ? 'selected' : '' ?>>...</option>
+                    <option value="" <?= Funcoes::setValue($dados, 'id_turma') == ""  ? 'selected' : '' ?>>...</option>
 
                     <?php foreach ($aTurma as $turma): ?>
                         <option value="<?= $turma['id_turma'] ?>" <?= Funcoes::setValue($dados, 'id_turma') == $turma['id_turma'] ? 'selected' : '' ?>><?= $turma['nome_turma'] ?></option>
                     <?php endforeach; ?>
-                    
+
                 </select>
             </div>
 

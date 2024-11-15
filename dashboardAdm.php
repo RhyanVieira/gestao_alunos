@@ -56,7 +56,7 @@ $countPagamento = $db->dbSelect("SELECT * FROM mensalidade WHERE status_pagament
         </div>
     </div>
 
-    <div class="row my-5 area-table" >
+    <div class="row my-5 area-table">
         <h3 class="fs-4 mb-3">Alunos Recentes</h3>
         <div class="col">
             <div class="table-responsive">
@@ -71,30 +71,30 @@ $countPagamento = $db->dbSelect("SELECT * FROM mensalidade WHERE status_pagament
                         </tr>
                     </thead>
                     <tbody>
-                    <?php if (count($data) > 0) : ?>
-                        <?php foreach ($data as $row): ?>
+                        <?php if (count($data) > 0) : ?>
+                            <?php foreach ($data as $row): ?>
+                                <tr>
+                                    <td><?= $row['id_aluno'] ?></td>
+                                    <td><?= $row['nome_completo'] ?></td>
+                                    <td><?php
+                                        $telefone = $row['telefone'];
+                                        $ddd = substr($telefone, 0, 2);
+                                        $numero = substr($telefone, 2);
+                                        $telefoneFormatado = "($ddd) " . substr($numero, 0, 5) . '-' . substr($numero, 5);
+                                        echo $telefoneFormatado;
+                                        ?>
+                                    </td>
+                                    <td><?= $row['email'] ?></td>
+                                    <td>
+                                        <a href="dashboard.php?pagina=formAluno&acao=view&id_aluno=<?= $row['id_aluno'] ?>" class="btn-view" title="Visualização">Visualizar</a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
                             <tr>
-                                <td><?= $row['id_aluno'] ?></td>
-                                <td><?= $row['nome_completo'] ?></td>
-                                <td><?php
-                                    $telefone = $row['telefone'];
-                                    $ddd = substr($telefone, 0, 2); 
-                                    $numero = substr($telefone, 2); 
-                                    $telefoneFormatado = "($ddd) " . substr($numero, 0, 5) . '-' . substr($numero, 5);
-                                    echo $telefoneFormatado;
-                                    ?>
-                                </td>
-                                <td><?= $row['email'] ?></td>
-                                <td>
-                                    <a href="dashboard.php?pagina=formAluno&acao=view&id_aluno=<?= $row['id_aluno'] ?>" class="btn-view" title="Visualização">Visualizar</a>
-                                </td>
+                                <td colspan="6">Nenhum registro encontrado.</td>
                             </tr>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <tr>
-                            <td colspan="6">Nenhum registro encontrado.</td>
-                        </tr>
-                    <?php endif; ?>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>

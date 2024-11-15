@@ -11,11 +11,10 @@ $userType = funcoes::getUserType($_SESSION['userEmail']);
 if ($userType == 'administrador') {
     $urlPrefix = "dashboard.php";
     $classContainer = "container mt-5 form-style";
-
 } elseif ($userType == 'administrador_pagina') {
     $urlPrefix = "index.php";
     $classContainer = "container form-style lista-index";
-} 
+}
 
 $dados = [];
 
@@ -54,10 +53,10 @@ if ($_GET['acao'] != 'insert') {
             <div class="col-3 mt-3">
                 <label for="nivel" class="form-label">Nível</label>
                 <select class="form-control" id="nivel" name="nivel" required>
-                        <option value=""  <?= Funcoes::setValue($dados, 'nivel') == ""  ? 'selected' : '' ?>>...</option>
-                        <option value="1" <?= Funcoes::setValue($dados, 'nivel') == "1" ? 'selected' : '' ?>>Diretor</option>
-                        <option value="2" <?= Funcoes::setValue($dados, 'nivel') == "2" ? 'selected' : '' ?>>Coordenador Acadêmico</option>
-                        <option value="3" <?= Funcoes::setValue($dados, 'nivel') == "3" ? 'selected' : '' ?>>Secretário</option>
+                    <option value="" <?= Funcoes::setValue($dados, 'nivel') == ""  ? 'selected' : '' ?>>...</option>
+                    <option value="1" <?= Funcoes::setValue($dados, 'nivel') == "1" ? 'selected' : '' ?>>Diretor</option>
+                    <option value="2" <?= Funcoes::setValue($dados, 'nivel') == "2" ? 'selected' : '' ?>>Coordenador Acadêmico</option>
+                    <option value="3" <?= Funcoes::setValue($dados, 'nivel') == "3" ? 'selected' : '' ?>>Secretário</option>
                 </select>
             </div>
 
@@ -74,9 +73,9 @@ if ($_GET['acao'] != 'insert') {
             <div class="col-3 mt-3">
                 <label for="statusRegistro" class="form-label">Status</label>
                 <select class="form-control" id="statusRegistro" name="statusRegistro" required>
-                        <option value=""  <?= Funcoes::setValue($dados, 'statusRegistro') == ""  ? 'selected' : '' ?>>...</option>
-                        <option value="1" <?= Funcoes::setValue($dados, 'statusRegistro') == "1" ? 'selected' : '' ?>>Ativo</option>
-                        <option value="2" <?= Funcoes::setValue($dados, 'statusRegistro') == "2" ? 'selected' : '' ?>>Inativo</option>
+                    <option value="" <?= Funcoes::setValue($dados, 'statusRegistro') == ""  ? 'selected' : '' ?>>...</option>
+                    <option value="1" <?= Funcoes::setValue($dados, 'statusRegistro') == "1" ? 'selected' : '' ?>>Ativo</option>
+                    <option value="2" <?= Funcoes::setValue($dados, 'statusRegistro') == "2" ? 'selected' : '' ?>>Inativo</option>
                 </select>
             </div>
 

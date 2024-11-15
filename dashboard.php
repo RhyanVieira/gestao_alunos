@@ -17,7 +17,7 @@ $current_page = basename($_SERVER['REQUEST_URI']);
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -30,8 +30,8 @@ $current_page = basename($_SERVER['REQUEST_URI']);
     <script src="assets/vendors/Magnific-Popup/jquery.magnific-popup.min.js"></script>
     <script src="assets/js/jquery.ajaxchimp.min.js"></script>
     <script src="assets/js/mail-script.js"></script>
-    <script src="assets/js/main.js"></script>        
-        
+    <script src="assets/js/main.js"></script>
+
     <script src="utilities/DataTables/datatables.min.js" type="text/javascript"></script>
     <title>SmartClass | ADM</title>
 </head>
@@ -40,7 +40,8 @@ $current_page = basename($_SERVER['REQUEST_URI']);
     <div class="d-flex wrapper" id="wrapper">
         <div class="sidebar-wrapper" id="sidebar-wrapper">
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">
-                <i class="bi bi-book me-2"></i>SmartClass ADM</div>
+                <i class="bi bi-book me-2"></i>SmartClass ADM
+            </div>
             <div class="list-group list-group-flush my-3">
                 <a href="dashboard.php" class="list-group-item list-group-item-action bg-transparent fw-bold <?= ($current_page == 'dashboard.php' || $current_page == '') ? 'active' : '' ?>">
                     <i class="bi bi-speedometer2 me-2"></i>Painel</a>
@@ -49,7 +50,7 @@ $current_page = basename($_SERVER['REQUEST_URI']);
                 </a>
                 <a href="dashboard.php?pagina=listaMatricula" class="list-group-item list-group-item-action bg-transparent fw-bold <?= ($current_page == 'dashboard.php?pagina=listaMatricula') ? 'active' : '' ?>">
                     <i class="bi bi-person-badge me-2"></i> Matrículas
-                </a>        
+                </a>
                 <a href="dashboard.php?pagina=listaProfessor" class="list-group-item list-group-item-action bg-transparent fw-bold <?= ($current_page == 'dashboard.php?pagina=listaProfessor') ? 'active' : '' ?>">
                     <i class="bi bi-person-video me-2"></i>Professores
                 </a>
@@ -99,7 +100,7 @@ $current_page = basename($_SERVER['REQUEST_URI']);
             <div class="container">
                 <?= Funcoes::mensagem(); ?>
             </div>
-            
+
             <?php
 
             $pagina = 'dashboardAdm';
@@ -111,7 +112,7 @@ $current_page = basename($_SERVER['REQUEST_URI']);
             require_once $pagina . '.php';
 
             ?>
-            
+
         </div>
     </div>
 
@@ -120,7 +121,7 @@ $current_page = basename($_SERVER['REQUEST_URI']);
         var el = document.getElementById("wrapper");
         var toggleButton = document.getElementById("menu-toggle");
 
-        toggleButton.onclick = function () {
+        toggleButton.onclick = function() {
             el.classList.toggle("toggled");
         };
     </script>

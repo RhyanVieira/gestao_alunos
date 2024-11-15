@@ -7,8 +7,12 @@ $db = new Database();
 
 $noticia = null;
 if (isset($_GET['id_noticias'])) {
-    $id = (int) $_GET['id_noticias'];
-    $noticia = $db->dbSelect("SELECT * FROM noticias WHERE id_noticias = ? AND status_registro = 1", 'first', [$id]);
+    $id = $_GET['id_noticias'];
+    $noticia = $db->dbSelect("SELECT * FROM noticias WHERE id_noticias = ? 
+                                AND status_registro = 1", 
+                                'first', 
+                                [$id]
+    );
 }
 
 ?>

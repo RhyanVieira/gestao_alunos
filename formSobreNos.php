@@ -55,9 +55,9 @@ if ($_GET['acao'] != 'insert') {
             <div class="col-8 mt-3">
                 <label for="status_registro" class="form-label">Status</label>
                 <select class="form-control" id="status_registro" name="status_registro" required>
-                        <option value=""  <?= Funcoes::setValue($dados, 'status_registro') == ""  ? 'selected' : '' ?>>...</option>
-                        <option value="1" <?= Funcoes::setValue($dados, 'status_registro') == "1" ? 'selected' : '' ?>>Ativo</option>
-                        <option value="2" <?= Funcoes::setValue($dados, 'status_registro') == "2" ? 'selected' : '' ?>>Inativo</option>
+                    <option value="" <?= Funcoes::setValue($dados, 'status_registro') == ""  ? 'selected' : '' ?>>...</option>
+                    <option value="1" <?= Funcoes::setValue($dados, 'status_registro') == "1" ? 'selected' : '' ?>>Ativo</option>
+                    <option value="2" <?= Funcoes::setValue($dados, 'status_registro') == "2" ? 'selected' : '' ?>>Inativo</option>
                 </select>
             </div>
 
@@ -79,11 +79,9 @@ if ($_GET['acao'] != 'insert') {
 <script src="assets/ckeditor5/ckeditor5-build-classic/ckeditor.js"></script>
 
 <script type="text/javascript">
-
     ClassicEditor
         .create(document.querySelector('#texto'))
-        .catch( error => {
+        .catch(error => {
             console.error(error);
         });
-
 </script>

@@ -21,9 +21,10 @@ if (isset($_POST['nome_completo'])) {
     try {
         $result = $db->dbDelete("DELETE FROM administrador
                                 WHERE id_administrador = ?"
-                                , [
+                                ,[
                                     $_POST['id_administrador']
-                                ]);
+                                ]
+        );
         
         if ($result > 0) {  
             $_SESSION['msgSuccess'] = "Registro excluído com sucesso.";

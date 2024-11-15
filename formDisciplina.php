@@ -52,7 +52,7 @@ if ($_GET['acao'] != 'insert') {
                     <?php foreach ($aCurso as $curso): ?>
                         <option value="<?= $curso['id_curso'] ?>" <?= Funcoes::setValue($dados, 'id_curso') == $curso['id_curso'] ? 'selected' : '' ?>><?= $curso['curso'] ?></option>
                     <?php endforeach; ?>
-                    
+
                 </select>
             </div>
 

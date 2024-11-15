@@ -50,9 +50,9 @@ if ($_GET['acao'] != 'insert') {
             <div class="col-3">
                 <label for="status_registro" class="form-label">Status</label>
                 <select class="form-control" id="status_registro" name="status_registro" required>
-                        <option value=""  <?= Funcoes::setValue($dados, 'status_registro') == ""  ? 'selected' : '' ?>>...</option>
-                        <option value="1" <?= Funcoes::setValue($dados, 'status_registro') == "1" ? 'selected' : '' ?>>Ativo</option>
-                        <option value="2" <?= Funcoes::setValue($dados, 'status_registro') == "2" ? 'selected' : '' ?>>Inativo</option>
+                    <option value="" <?= Funcoes::setValue($dados, 'status_registro') == ""  ? 'selected' : '' ?>>...</option>
+                    <option value="1" <?= Funcoes::setValue($dados, 'status_registro') == "1" ? 'selected' : '' ?>>Ativo</option>
+                    <option value="2" <?= Funcoes::setValue($dados, 'status_registro') == "2" ? 'selected' : '' ?>>Inativo</option>
                 </select>
             </div>
 
@@ -80,15 +80,15 @@ if ($_GET['acao'] != 'insert') {
 <script src="assets/js/jqueryMask.js"></script>
 
 <script type="text/javascript">
-
-    $(document).ready( function() { 
-        $('#valor_curso').mask('##.###.###.##0,00', {reverse: true});
+    $(document).ready(function() {
+        $('#valor_curso').mask('##.###.###.##0,00', {
+            reverse: true
+        });
     })
 
     ClassicEditor
         .create(document.querySelector('#descricao'))
-        .catch( error => {
+        .catch(error => {
             console.error(error);
         });
-
 </script>

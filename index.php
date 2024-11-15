@@ -61,40 +61,40 @@ $current_page = basename($_SERVER['REQUEST_URI']);
                 </div>
             </div>
             <?php
-                if (!isset($_SESSION['userId'])) {
-                    ?>
-                    <div class="dropstart">
-                        <a href="#" class="login-button" type="button" data-bs-toggle="dropdown" aria-expanded="false">Login</a>
-                        <ul class="dropdown-menu dropdown-style">
-                            <li><a class="dropdown-item dropdown-item-style" href="index.php?pagina=loginViewAdministrador">Área Administrativa</a></li>
-                            <li><a class="dropdown-item dropdown-item-style" href="index.php?pagina=loginViewAreaRestrita">Área Restrita</a></li>
-                        </ul>
-                    </div>
-                    <button class="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <?php
-                    } else {
-                        ?>
-                        <div class="dropstart">
-                        <a href="#" class="login-button" type="button" data-bs-toggle="dropdown" aria-expanded="false"><?= substr($_SESSION['userName'], 0, 15) ?></a>
-                        <ul class="dropdown-menu dropdown-style">
-                            <li><a class="dropdown-item dropdown-item-style" href="index.php?pagina=listaSobreNos">Sobre Nós</a></li>
-                            <li><a class="dropdown-item dropdown-item-style" href="index.php?pagina=listaServicos">Serviços</a></li>
-                            <li><a class="dropdown-item dropdown-item-style" href="index.php?pagina=listaPropostas">Propostas</a></li>
-                            <li><a class="dropdown-item dropdown-item-style" href="index.php?pagina=listaNoticias">Noticias</a></li>
-                            <li><a class="dropdown-item dropdown-item-style" href="index.php?pagina=listaAdministrador">Administradores</a></li>
-                            <li><a class="dropdown-item dropdown-item-style" href="logout.php">Logut</a></li>
-                        </ul>
-                        </div>
-                        <button class="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <?php
+            if (!isset($_SESSION['userId'])) {
+            ?>
+                <div class="dropstart">
+                    <a href="#" class="login-button" type="button" data-bs-toggle="dropdown" aria-expanded="false">Login</a>
+                    <ul class="dropdown-menu dropdown-style">
+                        <li><a class="dropdown-item dropdown-item-style" href="index.php?pagina=loginViewAdministrador">Área Administrativa</a></li>
+                        <li><a class="dropdown-item dropdown-item-style" href="index.php?pagina=loginViewAreaRestrita">Área Restrita</a></li>
+                    </ul>
+                </div>
+                <button class="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            <?php
+            } else {
+            ?>
+                <div class="dropstart">
+                    <a href="#" class="login-button" type="button" data-bs-toggle="dropdown" aria-expanded="false"><?= substr($_SESSION['userName'], 0, 15) ?></a>
+                    <ul class="dropdown-menu dropdown-style">
+                        <li><a class="dropdown-item dropdown-item-style" href="index.php?pagina=listaSobreNos">Sobre Nós</a></li>
+                        <li><a class="dropdown-item dropdown-item-style" href="index.php?pagina=listaServicos">Serviços</a></li>
+                        <li><a class="dropdown-item dropdown-item-style" href="index.php?pagina=listaPropostas">Propostas</a></li>
+                        <li><a class="dropdown-item dropdown-item-style" href="index.php?pagina=listaNoticias">Noticias</a></li>
+                        <li><a class="dropdown-item dropdown-item-style" href="index.php?pagina=listaAdministrador">Administradores</a></li>
+                        <li><a class="dropdown-item dropdown-item-style" href="logout.php">Logut</a></li>
+                    </ul>
+                </div>
+                <button class="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            <?php
 
-                    }
-                    ?>
-            
+            }
+            ?>
+
         </div>
     </nav>
 

@@ -54,33 +54,33 @@ if ($_GET['acao'] != 'insert') {
             <div class="col-6 mt-3">
                 <label for="id_aluno" class="form-label">Aluno</label>
                 <select class="form-control" id="id_aluno" name="id_aluno" required>
-                    <option value=""  <?= Funcoes::setValue($dados, 'id_aluno') == ""  ? 'selected' : '' ?>>...</option>
+                    <option value="" <?= Funcoes::setValue($dados, 'id_aluno') == ""  ? 'selected' : '' ?>>...</option>
 
                     <?php foreach ($aAluno as $aluno): ?>
                         <option value="<?= $aluno['id_aluno'] ?>" <?= Funcoes::setValue($dados, 'id_aluno') == $aluno['id_aluno'] ? 'selected' : '' ?>><?= $aluno['nome_completo'] ?></option>
                     <?php endforeach; ?>
-                    
+
                 </select>
             </div>
-            
+
             <div class="col-6 mt-3">
                 <label for="id_turma" class="form-label">Turma</label>
                 <select class="form-control" id="id_turma" name="id_turma" required>
-                    <option value=""  <?= Funcoes::setValue($dados, 'id_turma') == ""  ? 'selected' : '' ?>>...</option>
+                    <option value="" <?= Funcoes::setValue($dados, 'id_turma') == ""  ? 'selected' : '' ?>>...</option>
 
                     <?php foreach ($aTurma as $turma): ?>
                         <option value="<?= $turma['id_turma'] ?>" <?= Funcoes::setValue($dados, 'id_turma') == $turma['id_turma'] ? 'selected' : '' ?>><?= $turma['nome_turma'] ?></option>
                     <?php endforeach; ?>
-                    
+
                 </select>
             </div>
 
             <div class="col-4 mt-3">
                 <label for="status_pagamento" class="form-label">Status de Pagamento</label>
                 <select class="form-control" id="status_pagamento" name="status_pagamento" required>
-                        <option value=""  <?= Funcoes::setValue($dados, 'status_pagamento') == ""  ? 'selected' : '' ?>>...</option>
-                        <option value="1" <?= Funcoes::setValue($dados, 'status_pagamento') == "1" ? 'selected' : '' ?>>Pago</option>
-                        <option value="2" <?= Funcoes::setValue($dados, 'status_pagamento') == "2" ? 'selected' : '' ?>>Pendente</option>
+                    <option value="" <?= Funcoes::setValue($dados, 'status_pagamento') == ""  ? 'selected' : '' ?>>...</option>
+                    <option value="1" <?= Funcoes::setValue($dados, 'status_pagamento') == "1" ? 'selected' : '' ?>>Pago</option>
+                    <option value="2" <?= Funcoes::setValue($dados, 'status_pagamento') == "2" ? 'selected' : '' ?>>Pendente</option>
                 </select>
             </div>
 
@@ -103,15 +103,15 @@ if ($_GET['acao'] != 'insert') {
 <script src="assets/js/jqueryMask.js"></script>
 
 <script type="text/javascript">
-
-    $(document).ready( function() { 
-        $('#valor').mask('##.###.###.##0,00', {reverse: true});
+    $(document).ready(function() {
+        $('#valor').mask('##.###.###.##0,00', {
+            reverse: true
+        });
     })
 
     ClassicEditor
         .create(document.querySelector('#descricao'))
-        .catch( error => {
+        .catch(error => {
             console.error(error);
         });
-
 </script>

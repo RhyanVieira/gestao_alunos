@@ -175,7 +175,6 @@ body {
 .services .card-link {
   text-decoration: none;
   color: #fff;
-  display: block;
 }
 .services .card-link .card {
   background-color: #191970;
@@ -207,11 +206,11 @@ body {
   text-decoration: none;
   transition: 0.3s background-color;
 }
-.button-propostas{
+.button-propostas {
   display: inline-block;
   margin: 0;
 }
-.button-propostas{
+.button-propostas {
   text-align: center;
   display: flex;
   justify-content: center;
@@ -341,7 +340,7 @@ footer {
   font-weight: 700;
 }
 
-.socials i{
+.socials i {
   text-decoration: none;
   color: #191970;
   margin-right: 5px;
@@ -365,7 +364,7 @@ footer {
   }
 }
 
-.header-pages h1{
+.header-pages h1 {
   margin-top: 120px;
   text-transform: uppercase;
   font-weight: bold;
@@ -432,14 +431,15 @@ footer {
     height: 1000px;
   }
 }
-.subtitulo-pages i, .subtitulo-item{
+.subtitulo-pages i,
+.subtitulo-item {
   color: #191970;
 }
-.login-view{
+.login-view {
   margin-top: 150px;
   height: 70vh;
 }
-.login-container{
+.login-container {
   position: relative;
   width: 100%;
   max-width: 400px;
@@ -450,27 +450,27 @@ footer {
   border-radius: 10px;
   text-align: center;
 }
-.login-container h2{
+.login-container h2 {
   margin-bottom: 20px;
   color: #333;
 }
-.login-form .input-group{
+.login-form .input-group {
   margin-bottom: 15px;
   text-align: left;
 }
-.login-form label{
+.login-form label {
   font-size: 14px;
   color: #333;
   margin-bottom: 5px;
 }
-.login-form input{
+.login-form input {
   width: 100%;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-.login-button-view{
+.login-button-view {
   width: 100%;
   padding: 10px;
   margin-top: 10px;
@@ -482,10 +482,10 @@ footer {
   cursor: pointer;
   transition: background-color 0.3s;
 }
-.login-button-view:hover{
+.login-button-view:hover {
   background-color: #2a2a81;
 }
-.forgot-password{
+.forgot-password {
   display: inline-block;
   margin-top: 10px;
   font-size: 14px;
@@ -493,44 +493,44 @@ footer {
   text-decoration: none;
   transition: color 0.3s ease;
 }
-.forgot-password:hover{
+.forgot-password:hover {
   color: #2a2a81;
 }
 
-.table{
-	width: 100%;
-  border-collapse: collapse; 
-  border-radius: 5px; 
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 5px;
   overflow: hidden;
 }
 
 table th {
-	padding: 12px;
-	text-align: left;
-	border-right: 1px solid #cecece;
+  padding: 12px;
+  text-align: left;
+  border-right: 1px solid #cecece;
 }
 
 table td {
-	padding: 12px;
-	border-right: 1px solid #cecece; 
+  padding: 12px;
+  border-right: 1px solid #cecece;
 }
 
-table td:last-child, table th:last-child {
-	border-right: none;
+table td:last-child,
+table th:last-child {
+  border-right: none;
 }
 
-.area-table{ 
-  padding: 0.7rem;
-  background-color: #2a2a8120;
-  border-radius: 5px;
-
-}
-.area-table-lista{
+.area-table {
   padding: 0.7rem;
   background-color: #2a2a8120;
   border-radius: 5px;
 }
-.btn-view{
+.area-table-lista {
+  padding: 0.7rem;
+  background-color: #2a2a8120;
+  border-radius: 5px;
+}
+.btn-view {
   background-color: #4682b4;
   color: #fff;
   font-size: 14px;
@@ -541,11 +541,11 @@ table td:last-child, table th:last-child {
   text-align: center;
   transition: transform 0.3s;
 }
-.btn-view:hover{
+.btn-view:hover {
   color: #fff;
   background-color: #4169e1;
 }
-.btn-back{
+.btn-back {
   background-color: #a9a9a9;
   color: #fff;
   font-size: 14px;
@@ -556,11 +556,11 @@ table td:last-child, table th:last-child {
   text-align: center;
   transition: transform 0.3s;
 }
-.btn-back:hover{
+.btn-back:hover {
   color: #fff;
   background-color: #808080;
 }
-.btn-new{
+.btn-new {
   background-color: #191970;
   color: #fff;
   font-size: 14px;
@@ -571,11 +571,11 @@ table td:last-child, table th:last-child {
   text-align: center;
   transition: transform 0.3s;
 }
-.btn-new:hover{
+.btn-new:hover {
   color: #fff;
   background-color: #2a2a81;
 }
-.btn-delete{
+.btn-delete {
   background-color: #dc143c;
   color: #fff;
   font-size: 14px;
@@ -586,11 +586,11 @@ table td:last-child, table th:last-child {
   text-align: center;
   transition: transform 0.3s;
 }
-.btn-delete:hover{
+.btn-delete:hover {
   color: #fff;
   background-color: #b22222;
 }
-.btn-update{
+.btn-update {
   background-color: #ffd700;
   color: #191970;
   font-size: 14px;
@@ -601,7 +601,7 @@ table td:last-child, table th:last-child {
   text-align: center;
   transition: transform 0.3s;
 }
-.btn-update:hover{
+.btn-update:hover {
   color: #fff;
   background-color: #ffa500;
 }
@@ -621,14 +621,14 @@ table td:last-child, table th:last-child {
   background-color: #2a2a8120;
 }
 
-.form-style{
+.form-style {
   background-color: #2a2a8120;
   border-radius: 5px;
   padding: 1rem;
   margin-bottom: 2rem;
 }
 
-.lista-index{
+.lista-index {
   margin-top: 200px;
   margin-bottom: 2rem;
   border-radius: 5px;
