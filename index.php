@@ -43,7 +43,7 @@ $current_page = basename($_SERVER['REQUEST_URI']);
                             <a class="nav-link mx-lg-2 <?= ($current_page == 'index.php' || $current_page == '') ? 'active' : '' ?> " href="index.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2 <?= ($current_page == 'index.php?pagina=sobrenos') ? 'active' : '' ?>" href="index.php?pagina=sobreNos">Sobre Nós</a>
+                            <a class="nav-link mx-lg-2 <?= ($current_page == 'index.php?pagina=sobreNos') ? 'active' : '' ?>" href="index.php?pagina=sobreNos">Sobre Nós</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link mx-lg-2 <?= ($current_page == 'index.php?pagina=servicos') ? 'active' : '' ?>" href="index.php?pagina=servicos">Serviços</a>
