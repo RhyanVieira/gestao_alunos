@@ -24,7 +24,7 @@ if (isset($_POST['nome_completo'])) {
             $atualizaSenha = true;
         } else {
             $_SESSION['msgError'] = "Senha e conferência da senha não estão iguais";
-            return header("Location: $urlPrefix.php?pagina=listaAdministrador");
+            return header("Location: $urlPrefix?pagina=listaAdministrador");
             exit;
         }
     }
