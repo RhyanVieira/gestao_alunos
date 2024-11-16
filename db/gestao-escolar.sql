@@ -60,6 +60,18 @@ CREATE TABLE administrador (
     UNIQUE INDEX email_UNIQUE (email ASC) VISIBLE
 ) ENGINE = InnoDB;
 
+ CREATE TABLE turma (
+    ano_semestre VARCHAR(7) NOT NULL,
+    nome_turma VARCHAR(45) NOT NULL,
+    id_curso INT NOT NULL,
+    id_administrador INT NOT NULL,
+    PRIMARY KEY (id_turma),
+    CONSTRAINT fk1_curso_ FOREIGN KEY (id_curso)
+        REFERENCES curso (id_curso),
+    CONSTRAINT fk1_administrador FOREIGN KEY (id_administrador)
+        REFERENCES administrador (id_administrador)
+) ENGINE = InnoDB;
+
 CREATE TABLE mensalidade (
     id_mensalidade INT NOT NULL AUTO_INCREMENT,
     valor DECIMAL(10 , 2 ) NOT NULL,
