@@ -37,7 +37,7 @@ $data = $db->dbSelect("SELECT * FROM mensalidade ORDER BY status_pagamento DESC"
                             <th scope="col">Vencimento</th>
                             <th scope="col">Data de Pagamento</th>
                             <th scope="col">Status</th>
-                            <th scope="col" width="300">Ação</th>
+                            <th scope="col" width="350">Ação</th>
                         </tr>
                     </thead>
                     <tbody>

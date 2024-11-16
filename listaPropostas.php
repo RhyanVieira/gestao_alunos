@@ -33,7 +33,7 @@ $data = $db->dbSelect("SELECT * FROM propostas ORDER BY status_registro");
                             <th scope="col">Subtitulo</th>
                             <th scope="col">Posição</th>
                             <th scope="col">Status</th>
-                            <th scope="col" width="500">Ação</th>
+                            <th scope="col" width="350">Ação</th>
                         </tr>
                     </thead>
                     <tbody>

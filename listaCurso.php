@@ -35,7 +35,7 @@ $data = $db->dbSelect("SELECT * FROM curso ORDER BY curso");
                             <th scope="col">Duração (Horas)</th>
                             <th scope="col">Mensalidade</th>
                             <th scope="col">Status</th>
-                            <th scope="col" width="300">Ação</th>
+                            <th scope="col" width="350">Ação</th>
                         </tr>
                     </thead>
                     <tbody>

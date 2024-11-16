@@ -45,7 +45,7 @@ $data = $db->dbSelect("SELECT * FROM turma ORDER BY id_curso");
                             <th scope="col">Turma</th>
                             <th scope="col">Curso</th>
                             <th scope="col">Coordenador</th>
-                            <th scope="col" width="300">Ação</th>
+                            <th scope="col" width="350">Ação</th>
                         </tr>
                     </thead>
                     <tbody>

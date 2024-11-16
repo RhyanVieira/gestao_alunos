@@ -34,7 +34,7 @@ $data = $db->dbSelect("SELECT * FROM disciplina ORDER BY id_curso");
                             <th scope="col">Disciplina</th>
                             <th scope="col">Curso</th>
                             <th scope="col">Carga Horária</th>
-                            <th scope="col" width="300">Ação</th>
+                            <th scope="col" width="350">Ação</th>
                         </tr>
                     </thead>
                     <tbody>

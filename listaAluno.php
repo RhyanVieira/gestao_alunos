@@ -35,7 +35,7 @@ $data = $db->dbSelect("SELECT * FROM aluno ORDER BY nome_completo");
                             <th scope="col">Telefone</th>
                             <th scope="col">Email</th>
                             <th scope="col">Status</th>
-                            <th scope="col" width="300">Ação</th>
+                            <th scope="col" width="350">Ação</th>
                         </tr>
                     </thead>
                     <tbody>

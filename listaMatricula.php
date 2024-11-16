@@ -33,7 +33,7 @@ $data = $db->dbSelect("SELECT * FROM matricula ORDER BY id_matricula");
                             <th scope="col" width="50">Id</th>
                             <th scope="col">Data Matrícula</th>
                             <th scope="col">Status</th>
-                            <th scope="col" width="300">Ação</th>
+                            <th scope="col" width="350">Ação</th>
                         </tr>
                     </thead>
                     <tbody>

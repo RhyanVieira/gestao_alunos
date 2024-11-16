@@ -33,7 +33,7 @@ $data = $db->dbSelect("SELECT * FROM noticias ORDER BY data_postagem DESC");
                             <th scope="col">Titulo</th>
                             <th scope="col">Data da Postagem</th>
                             <th scope="col">Status</th>
-                            <th scope="col" width="500">Ação</th>
+                            <th scope="col" width="350">Ação</th>
                         </tr>
                     </thead>
                     <tbody>
